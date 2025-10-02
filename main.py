@@ -2,7 +2,7 @@
 print("=== Willkommen zu deinem Budgetplaner ===")
 
 #Funktion für Menü
-def start_menu():
+def start_menu(): #definiert die Funktoin Start mit Namen start_menu
     print("\nWas willst du heute machen?")
     print("1) Einnahmen hinzufügen")
     print("2) Ausgaben hinzufügen")
@@ -11,11 +11,11 @@ def start_menu():
     print("5) Programm beenden")
     
     choice = input("Bitte wähle eine Option (1-4): ")
-    return choice
+    return choice #choice wird zum auswahl 
 
 #Hauptprogramm mit Schleife
 while True:
-    auswahl = start_menu()
+    auswahl = start_menu() #auswahl bekommt den Wert von Choice
 
     if auswahl == "1":
         print("Einnahmen hinzufügen")
