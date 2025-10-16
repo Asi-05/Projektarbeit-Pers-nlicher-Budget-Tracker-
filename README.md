@@ -1,7 +1,4 @@
-# Personal Budget Planer
-
-> 🚧 This is a template repository for student project in the course Programming Foundations at FHNW, BSc BIT.  
-> 🚧 Do not keep this section in your final submission.
+💰 Personal Budget Planer
 
 This project is intended to:
 
@@ -19,26 +16,28 @@ This project is intended to:
 ## 📝 Analysis
 
 **Problem**
-> 🚧 Describe the real-world problem your application solves. (Not HOW, but WHAT)
+> Viele Menschen möchten ihre persönlichen Finanzen besser verwalten, haben aber keine einfache Möglichkeit ihre Einnahmen und Ausgaben zu erfassen und übersichtlich darzustellen. Eine manuelle Nachführung mit Tabellen ist mühsam und fehleranfällig.
 
-💡 Example: In a small local pizzeria, the staff writes orders and calculates totals by hand. This causes mistakes and inconsistent orders or discounts.
+💡 Beispiel: 
 
 **Scenario**
 > 🚧 Describe when and how a user will use your application
 
-💡 Example: PizzaRP solves the part of the problem where orders and totals are created by letting a user select items from a menu and automatically generating a correct invoice.
+💡 Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
 
 **User stories:**
-1. As a user, I want to see the pizza menu in the console.
-2. As a user, I want to select pizzas and see the running total.
-3. As a user, I want discounts to be applied automatically.
-4. As a user, I want an invoice to be created and saved as a file.
+1. Als Benutzer möchte ich meine Einnahmen und Ausgaben erfassen, um meine Finanzen zu überwachen.
+2. Als Benutzer möchte ich Kategorien zuweisen können (z.B. Miete, Freizeit, Transport)
+3. Als Benutzer möchte ich Summen und Bilanzen für bestimmte Zeiträumen abrufen.
+4. Als Benutzer möchte ich die Einträge bearbeiten oder löschen können.
+5. Als Benutzer möchte ich Bilanze
 
 **Use cases:**
-- Show Menu (from `menu.txt`)
-- Create Order (choose pizzas)
-- Show Current Order and Total
-- Print Invoice (to `invoice_xxx.txt`)
+- Betrag erfassen (Einnahmen oder Ausgaben)
+- Summen nach Kategorien anzeigen
+- Bilanz Anzeigen
+- Einträge bearbeiten
+- Programm beenden
 
 ---
 
