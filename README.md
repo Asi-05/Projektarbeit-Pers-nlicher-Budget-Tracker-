@@ -1,4 +1,4 @@
-💰 Personal Budget Planer
+##💰 Personal Budget Planer
 
 This project is intended to:
 
