@@ -6,7 +6,6 @@
 
 This project is intended to:
 
-@@ -19,26 +16,28 @@ This project is intended to:
 ## 📝 Analysis
 
 **Problem**
