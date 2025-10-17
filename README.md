@@ -15,7 +15,7 @@ This project is intended to:
 
 **Scenario**
 > 🚧 Describe when and how a user will use your application
-💡 Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
+Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
 
 **User stories:**
 
