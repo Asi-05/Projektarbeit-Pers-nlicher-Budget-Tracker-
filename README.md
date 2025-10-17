@@ -1,8 +1,7 @@
-# Personal Budget Planer
+# 💰 Personal Budget Planer
 
 > 🚧 This is a template repository for student project in the course Programming Foundations at FHNW, BSc BIT.  
 > 🚧 Do not keep this section in your final submission.
-# 💰 Personal Budget Planer
 
 This project is intended to:
 
@@ -31,4 +30,4 @@ Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben
 - Bilanz Anzeigen
 - Einträge bearbeiten
 - Programm beenden
-- 
+  
