@@ -2,7 +2,7 @@ from funktionen import(
     einnahmen_hinzufuegen, 
     ausgaben_hinzufuegen,
     uebersicht_anzeigen,
-    editieren,
+    editieren, abbruch
 )
 
 print("=== Willkommen zu deinem Budgetplaner ===")

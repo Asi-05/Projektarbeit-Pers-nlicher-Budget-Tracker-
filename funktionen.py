@@ -10,5 +10,12 @@ def uebersicht_anzeigen():
 def editieren():
     print(">>> editieren hinzufügen")
 
-print("test")
+def abbruch():
+    print(">>> Funktion abbruch, back to main menu")
+
+
+
+#csv datei einbauen
+
+
 
