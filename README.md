@@ -9,11 +9,14 @@ This project is intended to:
 
 **Problem**
 > 🚧 Describe the real-world problem your application solves. (Not HOW, but WHAT)
+
 > Viele Menschen möchten ihre persönlichen Finanzen besser verwalten, haben aber keine einfache Möglichkeit ihre Einnahmen und Ausgaben zu erfassen und übersichtlich darzustellen. Eine manuelle Nachführung mit Tabellen ist mühsam und fehleranfällig.
 
 
 **Scenario**
 > 🚧 Describe when and how a user will use your application
+
+
 Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
 
 **User stories:**
