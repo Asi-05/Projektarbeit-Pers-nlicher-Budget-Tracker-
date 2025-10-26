@@ -1,4 +1,3 @@
-test x
 
 from funktionen import(
     einnahmen_hinzufuegen, 
