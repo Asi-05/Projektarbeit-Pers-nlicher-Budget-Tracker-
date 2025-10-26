@@ -1,7 +1,65 @@
+import csv
+from datetime import datetime
+
+DATEI = 'budget.csv'
+
+
+def datei_pruefen(): #prüfen, ob die CSV Datei exestiert, ansonsten wird diese erstellt
+    try:
+        with open (DATEI, 'x', newline = '') as file:
+            writer = csv.writer(file)
+            writer.writerow(['datum', 'kategorie', 'beschreibung', 'betrag', 'typ'])
+    except: FileExistsError
+    pass
+    
 def einnahmen_hinzufuegen():
-    print(">>> Funktion hinzufügen")
+    datei_pruefen() #funktion dateiprüfen wird abgeruft
+
+    print('\n ===== Einnahme hinzufügen =====')
+
+    while True: #Betrag abfragen
+        try:
+            betrag = float(input("Betrag (CHF): "))
+            break
+        except ValueError:
+            print("Bitte gültigen Betrag eingeben!")
+
+    while True:
+        datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()
+        try:#prüfen ob eingabe Format korrekt ist
+            datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')#% Format für CSV Datei zum Datum lesen
+            datum = datum_obj.strftime('%d.%m.%Y')
+            break
+        except ValueError:
+            print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
+
+    '''Kategorie wählen'''
+    print('\nKategorie wählen:') 
+    print('1) Lohn')
+    print('2) Sonstiges')
+    
+    while True: 
+        kategorie_auswahl = input('Bitte wähle 1 oder 2: ')
+        if kategorie_auswahl == '1':
+            kategorie = 'Lohn'
+            break
+        elif kategorie_auswahl == '2':
+            kategorie = 'Sonstiges'
+            break
+        else:
+            print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+
+    '''In CSV Datei speichern'''
+    with open(DATEI, 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([datum, kategorie, betrag, 'Einnahme'])
+
+    print(f'\n Einnahme von {betrag:.2f} CHF {kategorie} wurde gespeichert. \n')
+
 
 def ausgaben_hinzufuegen():
+
+
     print(">>> Ausgaben hinzufügen")
 
 def uebersicht_anzeigen():
