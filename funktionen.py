@@ -1,5 +1,7 @@
 import csv
 from datetime import datetime
+from doctest import register_optionflag
+from tkinter.constants import BROWSE
 
 DATEI = 'budget.csv'
 
@@ -63,7 +65,25 @@ def ausgaben_hinzufuegen():
     print(">>> Ausgaben hinzufügen")
 
 def uebersicht_anzeigen():
+    datei_pruefen() #funktion dateiprüfen wird abgeruft
+
+    counter = 0
+
+    with open(DATEI, 'r', newline = '') as file:    #öffnet datei im lesemodus und verhindert zusätzliche Lesezeilen
+
+
+        reader = csv.DictReader(file)         #erstellt CSV-Reader, der jede Zeile als ein Wörterbuch einliest, man kann aud die werte direkt zugreifen
+
+        print(f"\n{'Counter':<3} {'Datum':<12} {'Kategorie':<15} {'Betrag':<12} {'Typ':<10}") # geht jede Zeile durch
+        print("-" * 70)
+
+        for row in reader:
+            counter += 1
+
+            print(f"{counter:<12} {row['datum']:<12} {row['kategorie']:<15} {row['betrag']:<12} {row['typ']:<10}")      # printet die werte mit den gleichem abstand wie die namen der Spalten
+
     print(">>> Übersicht wird angezeigt")
+
 
 def editieren():
     print(">>> editieren hinzufügen")
