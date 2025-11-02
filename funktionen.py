@@ -121,7 +121,16 @@ def ausgaben_hinzufuegen():
         else:
             print('Ungültige Eingabe, bitte wähle eine gültige Kategorie')
 
-def datum_eingabe(prompt):
+    '''In CSV Datei speichern'''
+    with open(DATEI, 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([datum, kategorie, betrag, 'Ausgabe'])
+
+    print(f'\n Ausgabe von {betrag:.2f} CHF {kategorie} wurde gespeichert. \n')
+
+    
+
+def datum_eingabe(prompt): #JANATH WAS IST DAS?
     while True:
         eingabe = input(prompt).strip()
         try:
