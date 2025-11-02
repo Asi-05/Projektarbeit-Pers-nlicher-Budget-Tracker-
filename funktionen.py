@@ -105,7 +105,7 @@ def uebersicht_anzeigen():
 
             print(f'\nKategorie: {kategorie}')
 
-            print(f"\n{'Counter':<10} {'Datum':<12} {'Betrag':<12} {'Typ':<10}")  # geht jede Zeile durch
+            print(f"\n{'Counter':<10} {'Datum':<12} {'Betrag':<12} {'Typ':<10}")  # geht jede Zeile durch #EVTL. SUMME HINZUFÜGEN
             print("-" * 70)
             for row in reader:
 
