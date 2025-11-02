@@ -132,7 +132,7 @@ def datum_eingabe(prompt):
     '''In CSV Datei speichern'''
     with open(DATEI, 'a', newline='') as file:
         writer = csv.writer(file)
-        # writer.writerow([datum, kategorie,'', betrag, 'Ausgabe']) '' nur gemacht weil oben noch beschreibung steht
+        writer.writerow([datum, kategorie, betrag, 'Ausgabe'])
 
     print(f'\n Ausgabe von {betrag:.2f} CHF {kategorie} wurde gespeichert. \n')
 
@@ -230,7 +230,7 @@ def uebersicht_anzeigen():
 
 
 
-def editieren():
+def editieren(): #Filmon
     print(">>> editieren hinzufügen")
 
 def abbruch():
