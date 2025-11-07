@@ -155,14 +155,22 @@ def uebersicht_anzeigen():
     print('\n1) Kategorieübersicht')
     print('2) Bilanz einer bestimmten Periode')
 
-    optionauswahl = input("\nBitte wähle 1 oder 2:")
+    optionauswahl = input("\nBitte wähle 1 oder 2: ")
 
     if optionauswahl == '1':
 
         print('\nWähle eine Kategorie')
 
         print('\n1) Lohn')
-        print('2) Sonstiges')
+        print('2) Transport')
+        print('3) Einkäufe')
+        print('4) Versicherungen')
+        print('5) Miete')
+        print('6) Steuern')
+        print('7) Freizeit')
+        print('8) Sparen')
+        print('9) Well being')
+        print('10) Sonstiges')
 
         while True:
             kategorie_auswahl = input('\nBitte wähle 1 oder 2: ')
@@ -170,6 +178,30 @@ def uebersicht_anzeigen():
                 kategorie = 'Lohn'
                 break
             elif kategorie_auswahl == '2':
+                kategorie = 'Transport'
+                break
+            elif kategorie_auswahl == '3':
+                kategorie = 'Einkäufe'
+                break
+            elif kategorie_auswahl == '4':
+                kategorie = 'Versicherungen'
+                break
+            elif kategorie_auswahl == '5':
+                kategorie = 'Miete'
+                break
+            elif kategorie_auswahl == '6':
+                kategorie = 'Steuern'
+                break
+            elif kategorie_auswahl == '7':
+                kategorie = 'Freizeit'
+                break
+            elif kategorie_auswahl == '8':
+                kategorie = 'Sparen'
+                break
+            elif kategorie_auswahl == '9':
+                kategorie = 'Well being'
+                break
+            elif kategorie_auswahl == '10':
                 kategorie = 'Sonstiges'
                 break
             else:
@@ -208,6 +240,14 @@ def uebersicht_anzeigen():
         gesamt_einnahmen = 0
         gesamt_ausgaben = 0
         bilanz_lohn = 0
+        bilanz_transport = 0
+        bilanz_einkaeufe = 0
+        bilanz_versicherungen = 0
+        bilanz_miete = 0
+        bilanz_steuern = 0
+        bilanz_freizeit = 0
+        bilanz_sparen = 0
+        bilanz_wellbeing = 0
         bilanz_sonstiges = 0
 
         with open(DATEI, 'r', newline='') as file:
@@ -216,25 +256,50 @@ def uebersicht_anzeigen():
                 row_datum = datetime.strptime(row['datum'], '%d.%m.%Y')
                 if datum_von <= row_datum <= datum_bis:
                     betrag = float(row['betrag'])
+
+                    # Gesamtbilanz
+                    if row['typ'] == 'Einnahme':
+                        gesamt_einnahmen += betrag
+                    else:
+                        gesamt_ausgaben += betrag
+
+                    # Kategorie-spezifische Bilanz
                     if row['kategorie'] == 'Lohn':
-
-                        # Gesamtbilanz
-                        if row['typ'] == 'Einnahme':
-                            gesamt_einnahmen += betrag
-                        else:
-                            gesamt_ausgaben += betrag
-
-                        # Kategorie-spezifische Bilanz
-                        if row['kategorie'] == 'Lohn':
-                            bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
-                        elif row['kategorie'] == 'Sonstiges':
-                            bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
+                        bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Transport':
+                        bilanz_transport += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Einkäufe':
+                        bilanz_einkaeufe += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Versicherungen':
+                        bilanz_versicherungen += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Miete':
+                        bilanz_miete += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Steuern':
+                        bilanz_steuern += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Freizeit':
+                        bilanz_freizeit += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Sparen':
+                        bilanz_sparen += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Well being':
+                        bilanz_wellbeing += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Sonstiges':
+                        bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
 
         print(f'\nBilanz vom {datum_von.strftime("%d.%m.%Y")} bis {datum_bis.strftime("%d.%m.%Y")}:')
         print(f'\nLohn: {bilanz_lohn:.2f} CHF')
+        print(f'\nTransport: {bilanz_transport:.2f} CHF')
+        print(f'\nEinkäufe: {bilanz_einkaeufe:.2f} CHF')
+        print(f'\nVersicherungen: {bilanz_versicherungen:.2f} CHF')
+        print(f'\nMiete: {bilanz_miete:.2f} CHF')
+        print(f'\nSteuern: {bilanz_steuern:.2f} CHF')
+        print(f'\nFreizeiz: {bilanz_freizeit:.2f} CHF')
+        print(f'\nSparen: {bilanz_sparen:.2f} CHF')
+        print(f'\nWell being: {bilanz_wellbeing:.2f} CHF')
         print(f'Sonstiges: {bilanz_sonstiges:.2f} CHF')
+
         print(f'\nEinnahmen: {gesamt_einnahmen:.2f} CHF')
         print(f'Ausgaben: {gesamt_ausgaben:.2f} CHF')
+
         print(f'\nGesamtbilanz: {gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
 
 
