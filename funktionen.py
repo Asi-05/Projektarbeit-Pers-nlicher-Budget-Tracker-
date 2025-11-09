@@ -304,8 +304,235 @@ def uebersicht_anzeigen():
 
 
 
-def editieren(): #Filmon
-    print(">>> editieren hinzufügen")
+def editieren():
+    
+    datei_pruefen()
+
+    print('\n1) Eintrag löschen')
+    print('2) Eintrag bearbeiten')
+   
+
+    optionauswahl = input("\nBitte wähle 1 oder 2:")
+
+    if optionauswahl == '1':
+        
+        print('\nAusgabe oder Einnahme:')
+        while True:
+            AoE_auswahl = input('\nBitte gib an ob es sich um eine Ausgabe oder Einnahme handelt: ')
+            if AoE_auswahl == 'Einnahme':
+                print('\nWähle eine Kategorie')
+
+                print('\n1) Lohn')
+                print('2) Sonstiges')
+
+                kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
+                if kategorie_auswahl == '1':
+                    kategorie = 'Lohn'
+                    break
+                elif kategorie_auswahl == '2':
+                    kategorie = 'Sonstiges'
+                    break
+                else:
+                    print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+
+            elif AoE_auswahl == 'Ausgabe':
+                print('\nWähle eine Kategorie')
+
+                print('1) Transport')
+                print('2) Einkäufe')
+                print('3) Versicherungen')
+                print('4) Miete')
+                print('5) Steuern')
+                print('6) Freizeit')
+                print('7) Sparen')
+                print('8) Well being')
+                print('9) Sonstiges')
+                while True:
+                    kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1-9: ')
+                  
+                    if kategorie_auswahl == '1':
+                        kategorie = 'Transport'
+                        break
+                    elif kategorie_auswahl == '2':
+                        kategorie = 'Einkäufe'
+                        break
+                    elif kategorie_auswahl == '3':
+                        kategorie = 'Versicherungen'
+                        break
+                    elif kategorie_auswahl == '4':
+                        kategorie = 'Miete'
+                        break
+                    elif kategorie_auswahl == '5':
+                        kategorie = 'Steuern'
+                        break
+                    elif kategorie_auswahl == '6':
+                        kategorie = 'Freizeit'
+                        break
+                    elif kategorie_auswahl == '7':
+                        kategorie = 'Sparen'
+                        break
+                    elif kategorie_auswahl == '8':
+                        kategorie = 'Well being'
+                        break
+                    elif kategorie_auswahl == '9':
+                        kategorie = 'Sonstiges'
+                        break
+                    else:
+                        print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
+
+        while True:
+            datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
+            try:                                                            
+                datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
+                datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
+                break                                                       #beendet die schleife, wenn true
+            except ValueError:                                              #falls das datum ungültig ist
+                print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
+
+        with open(DATEI, 'r', newline='') as file:
+            reader = csv.DictReader(file)
+            daten= list(reader)
+        
+        neue_daten = []
+
+        geloescht= False
+        for row in daten:
+            if (row['typ']== AoE_auswahl and
+                row['kategorie']== kategorie and
+                row ['datum']== datum):
+                print(f'\nGefundener Eintrag: {row['datum']} | {row['betrag']} | {row['typ']} | {row['kategorie']}')
+                bestaetigung = input('Diesen Eintrag löschen? (ja/nein):').lower()
+                if bestaetigung=='ja':
+                    geloescht=True
+                    continue
+                neue_daten.append(row)
+
+        with open(DATEI, 'w', newline='') as file:
+            writer = csv.DictWriter(file, fieldnames= ['datum', 'betrag','typ', 'kategorie'])
+            writer.writeheader()
+            writer.writerrows(neue_daten)
+        
+        if geloescht:
+            print('\n Eintrag wurde gelöscht')
+        else:
+            print('\n Kein Eintrag wurde gelöscht oder gefunden')
+
+
+
+
+
+
+    elif optionauswahl == '2':
+        print('\nAusgabe oder Einnahme:')
+        while True:
+            AoE_auswahl = input('\nBitte gib an ob es sich um eine Ausgabe oder Einnahme handelt: ')
+            if AoE_auswahl == 'Einnahme':
+                print('\nWähle eine Kategorie')
+
+                print('\n1) Lohn')
+                print('2) Sonstiges')
+
+                kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
+                if kategorie_auswahl == '1':
+                    kategorie = 'Lohn'
+                    break
+                elif kategorie_auswahl == '2':
+                    kategorie = 'Sonstiges'
+                    break
+                else:
+                    print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+
+            elif AoE_auswahl == 'Ausgabe':
+                print('\nWähle eine Kategorie')
+
+                print('1) Transport')
+                print('2) Einkäufe')
+                print('3) Versicherungen')
+                print('4) Miete')
+                print('5) Steuern')
+                print('6) Freizeit')
+                print('7) Sparen')
+                print('8) Well being')
+                print('9) Sonstiges')
+                while True:
+                    kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1-9: ')
+                  
+                    if kategorie_auswahl == '1':
+                        kategorie = 'Transport'
+                        break
+                    elif kategorie_auswahl == '2':
+                        kategorie = 'Einkäufe'
+                        break
+                    elif kategorie_auswahl == '3':
+                        kategorie = 'Versicherungen'
+                        break
+                    elif kategorie_auswahl == '4':
+                        kategorie = 'Miete'
+                        break
+                    elif kategorie_auswahl == '5':
+                        kategorie = 'Steuern'
+                        break
+                    elif kategorie_auswahl == '6':
+                        kategorie = 'Freizeit'
+                        break
+                    elif kategorie_auswahl == '7':
+                        kategorie = 'Sparen'
+                        break
+                    elif kategorie_auswahl == '8':
+                        kategorie = 'Well being'
+                        break
+                    elif kategorie_auswahl == '9':
+                        kategorie = 'Sonstiges'
+                        break
+                    else:
+                        print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
+
+        while True:
+            datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
+            try:                                                            
+                datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
+                datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
+                break                                                       #beendet die schleife, wenn true
+            except ValueError:                                              #falls das datum ungültig ist
+                print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
+            
+            
+            
+        neue_daten = []
+        bearbeitet= False
+
+        for row in daten:
+            if (row['typ']== AoE_auswahl and
+                row['kategorie']== kategorie and
+                row ['datum']== datum):
+                print(f'\nGefundener Eintrag: {row['datum']} | {row['betrag']} | {row['typ']} | {row['kategorie']}')
+                bestaetigung = input('Diesen Eintrag bearbeiten? (ja/nein):').lower()
+                if bestaetigung=='ja':
+                    neuer_typ= input('Einnahme oder Ausgabe:')
+                    neuer_betrag= input('Neuer Betrag: ')
+                    neues_datum= input(' Neues Datum(TT.MM.JJJ):')
+                    neue_kategorie= input('Neue Kategorie:')
+                    
+                    if neuer_typ.strip()=='':
+                        neuer_typ=row['typ']
+                    if neues_datum.strip()=='':
+                        neues_datum=row['datum']
+                    if neuer_betrag.strip()=='':
+                        neuer_betrag= row['betrag']
+                    if neue_kategorie.strip()=='':
+                        neue_kategorie= row['kategorie']
+            neue_daten.append(row)
+
+        with open(DATEI, 'w', newline='') as file:
+            writer = csv.DictWriter(file, fieldnames= ['datum', 'betrag','typ', 'kategorie'])
+            writer.writeheader()
+            writer.writerrows(neue_daten)
+        
+        if bearbeitet:
+            print('\n Eintrag wurde bearbeitet')
+        else:
+            print('\n Kein Eintrag wurde bearbeitet oder gefunden')
+                
 
 def abbruch():
     print(">>> Funktion abbruch, back to main menu")
