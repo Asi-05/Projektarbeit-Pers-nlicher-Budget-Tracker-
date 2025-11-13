@@ -535,51 +535,71 @@ def editieren():
                     neuer_typ= input('Einnahme oder Ausgabe:')
                     neuer_betrag= input('Neuer Betrag: ')
                     neues_datum= input('Neues Datum (TT.MM.JJJ):')
-                    print('1) Transport')
-                    print('2) Einkäufe')
-                    print('3) Versicherungen')
-                    print('4) Miete')
-                    print('5) Steuern')
-                    print('6) Freizeit')
-                    print('7) Sparen')
-                    print('8) Well being')
-                    print('9) Sonstiges')
-                    
+                    neue_kategorie= row['kategorie']
+                    ziel_typ= neuer_typ if neuer_typ else row['typ']
+                 
                     while True:
-                        neue_kategorie_auswahl= input('Neue Kategorie:')
-                        if neue_kategorie_auswahl=='':
-                            neue_kategorie=row['kategorie']
-                            break
-                        elif neue_kategorie_auswahl == '1':
-                            neue_kategorie = 'Transport'
-                            break
-                        elif neue_kategorie_auswahl == '2':
-                            neue_kategorie = 'Einkäufe'
-                            break
-                        elif neue_kategorie_auswahl == '3':
-                            neue_kategorie = 'Versicherungen'
-                            break
-                        elif neue_kategorie_auswahl == '4':
-                            neue_kategorie = 'Miete'
-                            break
-                        elif neue_kategorie_auswahl == '5':
-                            neue_kategorie = 'Steuern'
-                            break
-                        elif neue_kategorie_auswahl == '6':                                                                                                                                                                                                                                             
-                            neue_kategorie = 'Freizeit'
-                            break
-                        elif neue_kategorie_auswahl == '7':
-                            neue_kategorie = 'Sparen'
-                            break
-                        elif neue_kategorie_auswahl == '8':
-                            neue_kategorie = 'Well being'
-                            break
-                        elif neue_kategorie_auswahl == '9':
-                            neue_kategorie = 'Sonstiges'
-                            break
+                        if ziel_typ =='Einnahme':
+                            print('\n1)Lohn')
+                            print('2) Sonstiges')
+                            neue_kategorie_auswahl= input('Neue Kategorie (1/2) wählen:').strip()
+                            if neue_kategorie_auswahl=='':
+                                break
+                            elif neue_kategorie_auswahl=='1':
+                                neue_kategorie= 'Lohn'
+                                break
+                            elif neue_kategorie_auswahl=='2':
+                                neue_kategorie='Sonstiges'
+                                break
+                            else:
+                                print('Ungültige Eingabe, bitte 1 oder 2 wählen.')
+                        elif ziel_typ== 'Ausgabe':
+                                print('1) Transport')
+                                print('2) Einkäufe')
+                                print('3) Versicherungen')
+                                print('4) Miete')
+                                print('5) Steuern')
+                                print('6) Freizeit')
+                                print('7) Sparen')
+                                print('8) Well being')
+                                print('9) Sonstiges')
+                                
+                                neue_kategorie_auswahl= input('Neue Kategorie:').strip()
+                                if neue_kategorie_auswahl=='':
+                                    neue_kategorie=row['kategorie']
+                                    break
+                                elif neue_kategorie_auswahl == '1':
+                                    neue_kategorie = 'Transport'
+                                    break
+                                elif neue_kategorie_auswahl == '2':
+                                    neue_kategorie = 'Einkäufe'
+                                    break
+                                elif neue_kategorie_auswahl == '3':
+                                    neue_kategorie = 'Versicherungen'
+                                    break
+                                elif neue_kategorie_auswahl == '4':
+                                    neue_kategorie = 'Miete'
+                                    break
+                                elif neue_kategorie_auswahl == '5':
+                                    neue_kategorie = 'Steuern'
+                                    break
+                                elif neue_kategorie_auswahl == '6':                                                                                                                                                                                                                                             
+                                    neue_kategorie = 'Freizeit'
+                                    break
+                                elif neue_kategorie_auswahl == '7':
+                                    neue_kategorie = 'Sparen'
+                                    break
+                                elif neue_kategorie_auswahl == '8':
+                                    neue_kategorie = 'Well being'
+                                    break
+                                elif neue_kategorie_auswahl == '9':
+                                    neue_kategorie = 'Sonstiges'
+                                    break
+                                else:
+                                    print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
                         else:
-                            print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
-
+                            print('Ungültiger Typ angegeben. Bitte zuerst Einnahme oder Ausgabe eingeben')
+                            break
                     if neuer_typ.strip()=='':
                         neuer_typ=row['typ']
                     if neues_datum.strip()=='':
