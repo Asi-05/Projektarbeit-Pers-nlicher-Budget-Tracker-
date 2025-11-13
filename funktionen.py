@@ -332,10 +332,11 @@ def editieren():
             except ValueError:
                 print("Bitte gültigen Betrag eingeben!")
             
-        print('\nAusgabe oder Einnahme:')
+        print('\n1) Einnahme')
+        print('2) Ausgabe')
         while True:
-            AoE_auswahl = input('\nBitte gib an ob es sich um eine Ausgabe oder Einnahme handelt: ')
-            if AoE_auswahl == 'Einnahme':
+            AoE_auswahl = input('\nBitte gib an ob es sich um eine Ausgabe oder Einnahme handelt (1/2): ')
+            if AoE_auswahl == '1':
                 print('\nWähle eine Kategorie')
 
                 print('\n1) Lohn')
@@ -351,7 +352,7 @@ def editieren():
                 else:
                     print('Ungültige Eingabe, bitte 1 oder 2 wählen')
 
-            elif AoE_auswahl == 'Ausgabe':
+            elif AoE_auswahl == '2':
                 print('\nWähle eine Kategorie')
 
                 print('1) Transport')
@@ -406,10 +407,10 @@ def editieren():
 
         geloescht= False
         for row in daten:
-            if (row['betrag'] == betrag_suche and
+            if (float(row['betrag'] == betrag_suche and
                 row['typ']== AoE_auswahl and
                 row['kategorie']== kategorie and
-                row ['datum']== datum):
+                row ['datum']== datum)):
                 print(f'\nGefundener Eintrag: {row['datum']} | {row['betrag']} | {row['typ']} | {row['kategorie']}')
                 bestaetigung = input('Diesen Eintrag löschen? (ja/nein):').lower()
                 if bestaetigung=='ja':
