@@ -534,7 +534,7 @@ def editieren():
                 if bestaetigung=='ja':
                     neuer_typ= input('Einnahme oder Ausgabe:')
                     neuer_betrag= input('Neuer Betrag: ')
-                    neues_datum= input(' Neues Datum(TT.MM.JJJ):')
+                    neues_datum= input('Neues Datum (TT.MM.JJJ):')
                     print('1) Transport')
                     print('2) Einkäufe')
                     print('3) Versicherungen')
