@@ -307,7 +307,7 @@ def uebersicht_anzeigen():
 def editieren():
     
     datei_pruefen()
-
+    daten = []
     print('\n1) Eintrag löschen')
     print('2) Eintrag bearbeiten')
    
