@@ -332,27 +332,29 @@ def editieren():
             except ValueError:
                 print("Bitte gültigen Betrag eingeben!")
             
-        print('\n1) Einnahme')
-        print('2) Ausgabe')
+        print(' Einnahme oder Ausgabe')
+        
         while True:
-            AoE_auswahl = input('\nBitte gib an ob es sich um eine Ausgabe oder Einnahme handelt (1/2): ')
-            if AoE_auswahl == '1':
+            AoE_auswahl = input('\nBitte gib an ob es sich um eine Einnahme oder Ausgabe handelt): ')
+            if AoE_auswahl == 'Einnahme':
                 print('\nWähle eine Kategorie')
 
                 print('\n1) Lohn')
                 print('2) Sonstiges')
 
-                kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
-                if kategorie_auswahl == '1':
-                    kategorie = 'Lohn'
-                    break
-                elif kategorie_auswahl == '2':
-                    kategorie = 'Sonstiges'
-                    break
-                else:
-                    print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+                while True:
+                    kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
+                    if kategorie_auswahl == '1':
+                        kategorie = 'Lohn'
+                        break
+                    elif kategorie_auswahl == '2':
+                        kategorie = 'Sonstiges'
+                        break
+                    else:
+                        print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+                break
 
-            elif AoE_auswahl == '2':
+            elif AoE_auswahl == 'Ausgabe':
                 print('\nWähle eine Kategorie')
 
                 print('1) Transport')
@@ -396,7 +398,7 @@ def editieren():
                         break
                     else:
                         print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
-
+            break
    
 
         with open(DATEI, 'r', newline='') as file:
@@ -407,16 +409,16 @@ def editieren():
 
         geloescht= False
         for row in daten:
-            if (float(row['betrag'] == betrag_suche and
+            if (float(row['betrag']) == betrag_suche and
                 row['typ']== AoE_auswahl and
                 row['kategorie']== kategorie and
-                row ['datum']== datum)):
+                row ['datum']== datum):
                 print(f'\nGefundener Eintrag: {row['datum']} | {row['betrag']} | {row['typ']} | {row['kategorie']}')
                 bestaetigung = input('Diesen Eintrag löschen? (ja/nein):').lower()
                 if bestaetigung=='ja':
                     geloescht=True
                     continue
-                neue_daten.append(row)
+            neue_daten.append(row)
 
         with open(DATEI, 'w', newline='') as file:
             writer = csv.DictWriter(file, fieldnames= ['datum', 'betrag','typ', 'kategorie'])
