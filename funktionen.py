@@ -52,7 +52,7 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
     '''In CSV Datei speichern'''
     with open(DATEI, 'a', newline='') as file:          #öffnet die datei im appendmodus ('a'), um daten hinzuzufügen
         writer = csv.writer(file)                       #erstellt ein CSV-Schreibobjekt
-        writer.writerow([datum, kategorie, betrag, 'Einnahme'])     #schreibt die neue einnahme als neue zeile in die Datei
+        writer.writerow([datum, betrag, 'Einnahme', kategorie])     #schreibt die neue einnahme als neue zeile in die Datei
 
     print(f'\nEinnahme von {betrag:.2f} CHF {kategorie} wurde gespeichert.\n')     #bestätigungsausgabe für den user
 
