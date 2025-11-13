@@ -310,14 +310,13 @@ def editieren():
     daten = []
     print('\n1) Eintrag löschen')
     print('2) Eintrag bearbeiten')
-   
 
     optionauswahl = input("\nBitte wähle 1 oder 2:")
 
     if optionauswahl == '1':
 
         while True:
-            datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
+            datum_eingabe = input('Bitte Datum eingeben (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
             try:                                                            
                 datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
                 datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
@@ -327,15 +326,15 @@ def editieren():
         
         while True: #Betrag abfragen
             try:
-                betrag_suche = float(input("Betrag (CHF): "))
+                betrag_suche = float(input("Gesuchter Betrag(CHF): "))
                 break
             except ValueError:
                 print("Bitte gültigen Betrag eingeben!")
             
-        print(' Einnahme oder Ausgabe')
+        print('Einnahme oder Ausgabe')
         
         while True:
-            AoE_auswahl = input('\nBitte gib an ob es sich um eine Einnahme oder Ausgabe handelt:').strip()
+            AoE_auswahl = input('\nBitte Einnahme oder Ausgabe angeben:').strip()
             if AoE_auswahl == 'Einnahme':
                 print('\nWähle eine Kategorie')
 
@@ -343,7 +342,7 @@ def editieren():
                 print('2) Sonstiges')
 
                 while True:
-                    kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
+                    kategorie_auswahl = input('\nBitte wähle eine Kategorie (1/2):')
                     if kategorie_auswahl == '1':
                         kategorie = 'Lohn'
                         break
@@ -355,7 +354,7 @@ def editieren():
                 break
 
             elif AoE_auswahl == 'Ausgabe':
-                print('\nWähle eine Kategorie')
+                print('\nWähle eine Kategorie:')
 
                 print('1) Transport')
                 print('2) Einkäufe')
@@ -433,7 +432,7 @@ def editieren():
 
     elif optionauswahl == '2':
         while True:
-            datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
+            datum_eingabe = input('Bitte Datum eingeben (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
             try:                                                            
                 datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
                 datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
@@ -443,7 +442,7 @@ def editieren():
         
         while True: #Betrag abfragen
             try:
-                betrag_suche = float(input("Betrag (CHF): "))
+                betrag_suche = float(input("Gesuchter Betrag (CHF): "))
                 break
             except ValueError:
                 print("Bitte gültigen Betrag eingeben!")
@@ -451,7 +450,7 @@ def editieren():
         print(' Einnahme oder Ausgabe')
         
         while True:
-            AoE_auswahl = input('\nBitte gib an ob es sich um eine Einnahme oder Ausgabe handelt:').strip()
+            AoE_auswahl = input('\nBitte Einnahme oder Ausgabe angeben:').strip()
             if AoE_auswahl == 'Einnahme':
                 print('\nWähle eine Kategorie')
 
@@ -536,16 +535,58 @@ def editieren():
                     neuer_typ= input('Einnahme oder Ausgabe:')
                     neuer_betrag= input('Neuer Betrag: ')
                     neues_datum= input(' Neues Datum(TT.MM.JJJ):')
-                    neue_kategorie= input('Neue Kategorie:')
+                    print('1) Transport')
+                    print('2) Einkäufe')
+                    print('3) Versicherungen')
+                    print('4) Miete')
+                    print('5) Steuern')
+                    print('6) Freizeit')
+                    print('7) Sparen')
+                    print('8) Well being')
+                    print('9) Sonstiges')
                     
+                    while True:
+                        neue_kategorie_auswahl= input('Neue Kategorie:')
+                        if neue_kategorie_auswahl=='':
+                            neue_kategorie=row['kategorie']
+                            break
+                        elif neue_kategorie_auswahl == '1':
+                            neue_kategorie = 'Transport'
+                            break
+                        elif neue_kategorie_auswahl == '2':
+                            neue_kategorie = 'Einkäufe'
+                            break
+                        elif neue_kategorie_auswahl == '3':
+                            neue_kategorie = 'Versicherungen'
+                            break
+                        elif neue_kategorie_auswahl == '4':
+                            neue_kategorie = 'Miete'
+                            break
+                        elif neue_kategorie_auswahl == '5':
+                            neue_kategorie = 'Steuern'
+                            break
+                        elif neue_kategorie_auswahl == '6':                                                                                                                                                                                                                                             
+                            neue_kategorie = 'Freizeit'
+                            break
+                        elif neue_kategorie_auswahl == '7':
+                            neue_kategorie = 'Sparen'
+                            break
+                        elif neue_kategorie_auswahl == '8':
+                            neue_kategorie = 'Well being'
+                            break
+                        elif neue_kategorie_auswahl == '9':
+                            neue_kategorie = 'Sonstiges'
+                            break
+                        else:
+                            print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
+
                     if neuer_typ.strip()=='':
                         neuer_typ=row['typ']
                     if neues_datum.strip()=='':
                         neues_datum=row['datum']
                     if neuer_betrag.strip()=='':
                         neuer_betrag= row['betrag']
-                    if neue_kategorie.strip()=='':
-                        neue_kategorie= row['kategorie']         
+                          
 
                     neue_daten.append({
                         'datum': neues_datum,
