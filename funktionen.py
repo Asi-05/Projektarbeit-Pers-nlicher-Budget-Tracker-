@@ -335,7 +335,7 @@ def editieren():
         print(' Einnahme oder Ausgabe')
         
         while True:
-            AoE_auswahl = input('\nBitte gib an ob es sich um eine Einnahme oder Ausgabe handelt): ')
+            AoE_auswahl = input('\nBitte gib an ob es sich um eine Einnahme oder Ausgabe handelt:').strip()
             if AoE_auswahl == 'Einnahme':
                 print('\nWähle eine Kategorie')
 
