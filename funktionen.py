@@ -535,8 +535,9 @@ def editieren():
                     neuer_typ= input('Einnahme oder Ausgabe:')
                     neuer_betrag= input('Neuer Betrag: ')
                     neues_datum= input('Neues Datum (TT.MM.JJJ):')
-                    neue_kategorie= row['kategorie']
                     ziel_typ= neuer_typ if neuer_typ else row['typ']
+                    neue_kategorie= row['kategorie']
+                    
                  
                     while True:
                         if ziel_typ =='Einnahme':
