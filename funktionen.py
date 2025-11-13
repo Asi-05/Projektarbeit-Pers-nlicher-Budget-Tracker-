@@ -431,29 +431,44 @@ def editieren():
             print('\n Kein Eintrag wurde gelöscht oder gefunden')
 
 
-
-
-
-
     elif optionauswahl == '2':
-        print('\nAusgabe oder Einnahme:')
         while True:
-            AoE_auswahl = input('\nBitte gib an ob es sich um eine Ausgabe oder Einnahme handelt: ')
+            datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
+            try:                                                            
+                datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
+                datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
+                break                                                       #beendet die schleife, wenn true
+            except ValueError:                                              #falls das datum ungültig ist
+                print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
+        
+        while True: #Betrag abfragen
+            try:
+                betrag_suche = float(input("Betrag (CHF): "))
+                break
+            except ValueError:
+                print("Bitte gültigen Betrag eingeben!")
+            
+        print(' Einnahme oder Ausgabe')
+        
+        while True:
+            AoE_auswahl = input('\nBitte gib an ob es sich um eine Einnahme oder Ausgabe handelt:').strip()
             if AoE_auswahl == 'Einnahme':
                 print('\nWähle eine Kategorie')
 
                 print('\n1) Lohn')
                 print('2) Sonstiges')
 
-                kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
-                if kategorie_auswahl == '1':
-                    kategorie = 'Lohn'
-                    break
-                elif kategorie_auswahl == '2':
-                    kategorie = 'Sonstiges'
-                    break
-                else:
-                    print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+                while True:
+                    kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
+                    if kategorie_auswahl == '1':
+                        kategorie = 'Lohn'
+                        break
+                    elif kategorie_auswahl == '2':
+                        kategorie = 'Sonstiges'
+                        break
+                    else:
+                        print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+                break
 
             elif AoE_auswahl == 'Ausgabe':
                 print('\nWähle eine Kategorie')
@@ -485,7 +500,7 @@ def editieren():
                     elif kategorie_auswahl == '5':
                         kategorie = 'Steuern'
                         break
-                    elif kategorie_auswahl == '6':
+                    elif kategorie_auswahl == '6':                                                                                                                                                                                                                                             
                         kategorie = 'Freizeit'
                         break
                     elif kategorie_auswahl == '7':
@@ -499,25 +514,22 @@ def editieren():
                         break
                     else:
                         print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
+            break
+            
 
-        while True:
-            datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
-            try:                                                            
-                datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
-                datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
-                break                                                       #beendet die schleife, wenn true
-            except ValueError:                                              #falls das datum ungültig ist
-                print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
-            
-            
-            
+        with open(DATEI, 'r', newline='') as file:
+            reader = csv.DictReader(file)
+            daten= list(reader)   
         neue_daten = []
         bearbeitet= False
 
         for row in daten:
-            if (row['typ']== AoE_auswahl and
+            if (
+                round(float(row['betrag']),2)== round(betrag_suche,2) and
+                row['typ']==AoE_auswahl.strip() and
                 row['kategorie']== kategorie and
-                row ['datum']== datum):
+                row ['datum']== datum
+            ):
                 print(f'\nGefundener Eintrag: {row['datum']} | {row['betrag']} | {row['typ']} | {row['kategorie']}')
                 bestaetigung = input('Diesen Eintrag bearbeiten? (ja/nein):').lower()
                 if bestaetigung=='ja':
@@ -533,18 +545,29 @@ def editieren():
                     if neuer_betrag.strip()=='':
                         neuer_betrag= row['betrag']
                     if neue_kategorie.strip()=='':
-                        neue_kategorie= row['kategorie']
+                        neue_kategorie= row['kategorie']         
+
+                    neue_daten.append({
+                        'datum': neues_datum,
+                        'betrag': neuer_betrag,
+                        'typ': neuer_typ,
+                        'kategorie': neue_kategorie
+                    })
+                    bearbeitet= True
+                    continue
             neue_daten.append(row)
 
         with open(DATEI, 'w', newline='') as file:
             writer = csv.DictWriter(file, fieldnames= ['datum', 'betrag','typ', 'kategorie'])
             writer.writeheader()
             writer.writerows(neue_daten)
-        
+                    
         if bearbeitet:
             print('\n Eintrag wurde bearbeitet')
         else:
             print('\n Kein Eintrag wurde bearbeitet oder gefunden')
+
+            
                 
 
 def abbruch():
