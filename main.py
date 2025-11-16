@@ -1,10 +1,5 @@
 
-from funktionen import(
-    einnahmen_hinzufuegen, 
-    ausgaben_hinzufuegen,
-    uebersicht_anzeigen,
-    editieren, abbruch
-)
+from funktionen import * # Stern importiert alle Funktionen von funktionen.py
 
 print("=== Willkommen zu deinem Budgetplaner ===")
 
