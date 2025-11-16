@@ -17,15 +17,29 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
 
     print('\n ===== Einnahme hinzufügen =====')
 
+    print('x) Zurück zum Hauptmenu')
+
+
+
     while True:                     #Wiederhole bis eine gültige zahl eingegeben wurde
+
+        eingabe = input("Betrag (CHF): ").strip()
+
+        if eingabe.lower() == 'x':
+            return # zurück ins hauptmenu
+
         try:
-            betrag = float(input("Betrag (CHF): ")) #fragt den betrag ab und wandelt ihn in ein float um
+            betrag = float(eingabe) #fragt den betrag ab und wandelt ihn in ein float um
             break                                   #beendet die schleife, wenn erfolgreich
         except ValueError:                          #wenn keine gültige zahl eingegeben wurde
             print("Bitte gültigen Betrag eingeben!")#fehlermeldug zeigen
 
     while True:
-        datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
+        datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()   #fragt das Datum ab und entfernt die leerzeichen
+
+        if eingabe.lower() == 'x':
+            return  # zurück zum Hauptmenü
+
         try:                                                            
             datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
             datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
@@ -38,6 +52,8 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
     print('1) Lohn')                    #option 1 Lohn
     print('2) Sonstiges')               #option 2 Sonstiges
 
+    print('x) Zurück zum Hauptmenu')
+
     while True:     #wiederhole bis eine gültige kategorie gewählt wurde
         kategorie_auswahl = input('Bitte wähle 1 oder 2: ')         #fragt nach der auswahl
         if kategorie_auswahl == '1':                                #wenn 1 eingegeben wird
@@ -46,6 +62,8 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
         elif kategorie_auswahl == '2':                              #wenn 2 eingegeben wird                              
             kategorie = 'Sonstiges'                                 #kategorie auf sonstiges setzen
             break                                                       #schleife beenden
+        elif kategorie_auswahl == 'x':                               #zurück zum Hauptmenü
+            return
         else:
             print('Ungültige Eingabe, bitte 1 oder 2 wählen')           #Fehlermeldung bei falscher Eingabe
 
@@ -61,9 +79,17 @@ def ausgaben_hinzufuegen():
     datei_pruefen() #Geht zurück zur Funktion Datei überprüfen und checkt 
     #ob es die Datei schon gibt und ansonsten erstellt sie eine neue
     print('\n====Ausgabe Hinzufügen====')
+
+    print('x) Zurück zum Hauptmenu')
+
     while True: #Betrag abfragen
+        eingabe = input("Betrag (CHF): ").strip()
+
+        if eingabe.lower() == 'x':
+            return # zurück zum Hauptmenu
+
         try:
-            betrag = float(input("Betrag (CHF): "))
+            betrag = float(eingabe)
             break
         except ValueError:
             print("Bitte gültigen Betrag eingeben!")
@@ -88,6 +114,7 @@ def ausgaben_hinzufuegen():
     print('7) Sparen')
     print('8) Well being')
     print('9) Sonstiges')
+    print('x) Zurück zum Hauptmenu')
     
     while True: 
         kategorie_auswahl = input('Bitte wähle eine Kategorie: ')
@@ -118,6 +145,8 @@ def ausgaben_hinzufuegen():
         elif kategorie_auswahl == '9':
             kategorie = 'Sonstiges'
             break
+        elif kategorie_auswahl == 'x':
+            return
         else:
             print('Ungültige Eingabe, bitte wähle eine gültige Kategorie')
 
@@ -154,6 +183,10 @@ def uebersicht_anzeigen():
 
     print('\n1) Kategorieübersicht')
     print('2) Bilanz einer bestimmten Periode')
+
+    print('x) Zurück zum Hauptmenu')
+
+
 
     optionauswahl = input("\nBitte wähle 1 oder 2:")
 
@@ -236,6 +269,9 @@ def uebersicht_anzeigen():
         print(f'\nEinnahmen: {gesamt_einnahmen:.2f} CHF')
         print(f'Ausgaben: {gesamt_ausgaben:.2f} CHF')
         print(f'\nGesamtbilanz: {gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
+
+    elif optionauswahl == 'x':
+        return
 
 
 
