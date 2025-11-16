@@ -17,15 +17,29 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
 
     print('\n ===== Einnahme hinzufügen =====')
 
+    print('x) Zurück zum Hauptmenu')
+
+
+
     while True:                     #Wiederhole bis eine gültige zahl eingegeben wurde
+
+        eingabe = input("Betrag (CHF): ").strip()
+
+        if eingabe.lower() == 'x':
+            return # zurück ins hauptmenu
+
         try:
-            betrag = float(input("Betrag (CHF): ")) #fragt den betrag ab und wandelt ihn in ein float um
+            betrag = float(eingabe) #fragt den betrag ab und wandelt ihn in ein float um
             break                                   #beendet die schleife, wenn erfolgreich
         except ValueError:                          #wenn keine gültige zahl eingegeben wurde
             print("Bitte gültigen Betrag eingeben!")#fehlermeldug zeigen
 
     while True:
-        datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
+        datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()   #fragt das Datum ab und entfernt die leerzeichen
+
+        if eingabe.lower() == 'x':
+            return  # zurück zum Hauptmenü
+
         try:                                                            
             datum_obj = datetime.strptime(datum_eingabe, '%d.%m.%Y')    #prüft, ob das datum im richtigen format ist    
             datum = datum_obj.strftime('%d.%m.%Y')                      #formatiert das datum einheitlich für die csv datei                      
@@ -38,6 +52,8 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
     print('1) Lohn')                    #option 1 Lohn
     print('2) Sonstiges')               #option 2 Sonstiges
 
+    print('x) Zurück zum Hauptmenu')
+
     while True:     #wiederhole bis eine gültige kategorie gewählt wurde
         kategorie_auswahl = input('Bitte wähle 1 oder 2: ')         #fragt nach der auswahl
         if kategorie_auswahl == '1':                                #wenn 1 eingegeben wird
@@ -46,6 +62,8 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
         elif kategorie_auswahl == '2':                              #wenn 2 eingegeben wird                              
             kategorie = 'Sonstiges'                                 #kategorie auf sonstiges setzen
             break                                                       #schleife beenden
+        elif kategorie_auswahl == 'x':                               #zurück zum Hauptmenü
+            return
         else:
             print('Ungültige Eingabe, bitte 1 oder 2 wählen')           #Fehlermeldung bei falscher Eingabe
 
@@ -61,9 +79,17 @@ def ausgaben_hinzufuegen():
     datei_pruefen() #Geht zurück zur Funktion Datei überprüfen und checkt 
     #ob es die Datei schon gibt und ansonsten erstellt sie eine neue
     print('\n====Ausgabe Hinzufügen====')
+
+    print('x) Zurück zum Hauptmenu')
+
     while True: #Betrag abfragen
+        eingabe = input("Betrag (CHF): ").strip()
+
+        if eingabe.lower() == 'x':
+            return # zurück zum Hauptmenu
+
         try:
-            betrag = float(input("Betrag (CHF): "))
+            betrag = float(eingabe)
             break
         except ValueError:
             print("Bitte gültigen Betrag eingeben!")
@@ -88,6 +114,7 @@ def ausgaben_hinzufuegen():
     print('7) Sparen')
     print('8) Well being')
     print('9) Sonstiges')
+    print('x) Zurück zum Hauptmenu')
     
     while True: 
         kategorie_auswahl = input('Bitte wähle eine Kategorie: ')
@@ -118,6 +145,8 @@ def ausgaben_hinzufuegen():
         elif kategorie_auswahl == '9':
             kategorie = 'Sonstiges'
             break
+        elif kategorie_auswahl == 'x':
+            return
         else:
             print('Ungültige Eingabe, bitte wähle eine gültige Kategorie')
 
@@ -155,22 +184,18 @@ def uebersicht_anzeigen():
     print('\n1) Kategorieübersicht')
     print('2) Bilanz einer bestimmten Periode')
 
-    optionauswahl = input("\nBitte wähle 1 oder 2: ")
+    print('x) Zurück zum Hauptmenu')
+
+
+
+    optionauswahl = input("\nBitte wähle 1 oder 2:")
 
     if optionauswahl == '1':
 
         print('\nWähle eine Kategorie')
 
         print('\n1) Lohn')
-        print('2) Transport')
-        print('3) Einkäufe')
-        print('4) Versicherungen')
-        print('5) Miete')
-        print('6) Steuern')
-        print('7) Freizeit')
-        print('8) Sparen')
-        print('9) Well being')
-        print('10) Sonstiges')
+        print('2) Sonstiges')
 
         while True:
             kategorie_auswahl = input('\nBitte wähle 1 oder 2: ')
@@ -178,30 +203,6 @@ def uebersicht_anzeigen():
                 kategorie = 'Lohn'
                 break
             elif kategorie_auswahl == '2':
-                kategorie = 'Transport'
-                break
-            elif kategorie_auswahl == '3':
-                kategorie = 'Einkäufe'
-                break
-            elif kategorie_auswahl == '4':
-                kategorie = 'Versicherungen'
-                break
-            elif kategorie_auswahl == '5':
-                kategorie = 'Miete'
-                break
-            elif kategorie_auswahl == '6':
-                kategorie = 'Steuern'
-                break
-            elif kategorie_auswahl == '7':
-                kategorie = 'Freizeit'
-                break
-            elif kategorie_auswahl == '8':
-                kategorie = 'Sparen'
-                break
-            elif kategorie_auswahl == '9':
-                kategorie = 'Well being'
-                break
-            elif kategorie_auswahl == '10':
                 kategorie = 'Sonstiges'
                 break
             else:
@@ -210,7 +211,7 @@ def uebersicht_anzeigen():
 
         with open(DATEI, 'r', newline='') as file:  # öffnet datei im lesemodus und verhindert zusätzliche Lesezeilen
 
-            reader = csv.DictReader(file) # erstellt CSV-Reader, der jede Zeile als ein Wörterbuch einliest, man kann aud die werte direkt zugreifen
+            reader = csv.DictReader(file) # erstellt CSV-Reader, der jede Zeile als ein Wörterbuch einliest, man kann aud die werte direkt zugreifen.
 
             print(f'\nKategorie: {kategorie}')
 
@@ -240,14 +241,6 @@ def uebersicht_anzeigen():
         gesamt_einnahmen = 0
         gesamt_ausgaben = 0
         bilanz_lohn = 0
-        bilanz_transport = 0
-        bilanz_einkaeufe = 0
-        bilanz_versicherungen = 0
-        bilanz_miete = 0
-        bilanz_steuern = 0
-        bilanz_freizeit = 0
-        bilanz_sparen = 0
-        bilanz_wellbeing = 0
         bilanz_sonstiges = 0
 
         with open(DATEI, 'r', newline='') as file:
@@ -256,51 +249,29 @@ def uebersicht_anzeigen():
                 row_datum = datetime.strptime(row['datum'], '%d.%m.%Y')
                 if datum_von <= row_datum <= datum_bis:
                     betrag = float(row['betrag'])
-
-                    # Gesamtbilanz
-                    if row['typ'] == 'Einnahme':
-                        gesamt_einnahmen += betrag
-                    else:
-                        gesamt_ausgaben += betrag
-
-                    # Kategorie-spezifische Bilanz
                     if row['kategorie'] == 'Lohn':
-                        bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Transport':
-                        bilanz_transport += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Einkäufe':
-                        bilanz_einkaeufe += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Versicherungen':
-                        bilanz_versicherungen += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Miete':
-                        bilanz_miete += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Steuern':
-                        bilanz_steuern += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Freizeit':
-                        bilanz_freizeit += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Sparen':
-                        bilanz_sparen += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Well being':
-                        bilanz_wellbeing += betrag if row['typ'] == 'Einnahme' else -betrag
-                    elif row['kategorie'] == 'Sonstiges':
-                        bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
+
+                        # Gesamtbilanz
+                        if row['typ'] == 'Einnahme':
+                            gesamt_einnahmen += betrag
+                        else:
+                            gesamt_ausgaben += betrag
+
+                        # Kategorie-spezifische Bilanz
+                        if row['kategorie'] == 'Lohn':
+                            bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
+                        elif row['kategorie'] == 'Sonstiges':
+                            bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
 
         print(f'\nBilanz vom {datum_von.strftime("%d.%m.%Y")} bis {datum_bis.strftime("%d.%m.%Y")}:')
         print(f'\nLohn: {bilanz_lohn:.2f} CHF')
-        print(f'\nTransport: {bilanz_transport:.2f} CHF')
-        print(f'\nEinkäufe: {bilanz_einkaeufe:.2f} CHF')
-        print(f'\nVersicherungen: {bilanz_versicherungen:.2f} CHF')
-        print(f'\nMiete: {bilanz_miete:.2f} CHF')
-        print(f'\nSteuern: {bilanz_steuern:.2f} CHF')
-        print(f'\nFreizeiz: {bilanz_freizeit:.2f} CHF')
-        print(f'\nSparen: {bilanz_sparen:.2f} CHF')
-        print(f'\nWell being: {bilanz_wellbeing:.2f} CHF')
         print(f'Sonstiges: {bilanz_sonstiges:.2f} CHF')
-
         print(f'\nEinnahmen: {gesamt_einnahmen:.2f} CHF')
         print(f'Ausgaben: {gesamt_ausgaben:.2f} CHF')
-
         print(f'\nGesamtbilanz: {gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
+
+    elif optionauswahl == 'x':
+        return
 
 
 
