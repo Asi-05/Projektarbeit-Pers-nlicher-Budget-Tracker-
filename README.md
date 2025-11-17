@@ -1,7 +1,7 @@
 # 💰 Personal Budget Planer
 
 Dieses Projekt hat folgende Ziele:
--Einen personellen Budgetplaner programmieren
+Einen personellen Budgetplaner programmieren
 -
 
 ## 📝 Analysis
@@ -15,7 +15,7 @@ Viele Menschen möchten ihre persönlichen Finanzen besser verwalten, haben aber
 **Scenario**
 > 🚧 Describe when and how a user will use your application
 
-Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
+Beispiel: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
 
 **User stories:**
 
@@ -40,9 +40,7 @@ Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben
 
 ---
 
-### 1. Interaktive Anwendung (Konsoleneingabe)
-
-> 🚧 In this section, document how your project fulfills each criterion.  
+### 1. Interaktive Anwendung (Konsoleneingabe) 
 ---
 Die Anwendung interagiert über die Konsole mit dem Benutzer. Benutzer können: 
  1) Einnahmen hinzufügen
