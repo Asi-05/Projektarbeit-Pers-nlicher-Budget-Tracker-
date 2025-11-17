@@ -94,13 +94,7 @@ def datei_pruefen():    #prüfen, ob die CSV Datei exestiert, ansonsten wird die
 	
 ```
 
-- **Main menu options:** The main menu checks for valid options and handles invalid choices gracefully:
-	```python
-	else:
-			print("⚠️ Invalid choice.")
-	```
-
-These checks prevent crashes and guide the user to provide correct input, matching the validation requirements described in the project guidelines.
+Diese Prüfungen verhindern Abstürze und leiten den Benutzer dazu an, korrekte Eingaben zu machen, die den Projektrichtlinien beschriebenen Validierungsanforderungen entsprechen.
 
 ---
 
