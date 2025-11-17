@@ -8,6 +8,7 @@ from uebersicht_anzeigen import *
 
 
 
+
 print("=== Willkommen zu deinem Budgetplaner ===")
 
 def main():
