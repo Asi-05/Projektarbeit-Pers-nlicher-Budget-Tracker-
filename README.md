@@ -34,8 +34,6 @@ Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben
 
 ## ✅ Project Requirements
 
-Each app must meet the following three criteria in order to be accepted (see also the official project guidelines PDF on Moodle):
-
 1. Interaktive Anwendung (Konsoleneingabe)
 2. Datenvalidierung (Eingabeprüfung)
 3. Datenverarbeitung (Lesen/Schreiben)
