@@ -1,9 +1,8 @@
 # 💰 Personal Budget Planer
 
-> 🚧 This is a template repository for student project in the course Programming Foundations at FHNW, BSc BIT.  
-> 🚧 Do not keep this section in your final submission.
-
-This project is intended to:
+Dieses Projekt hat folgende Ziele:
+-Einen personellen Budgetplaner programmieren
+-
 
 ## 📝 Analysis
 
@@ -24,13 +23,13 @@ Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben
 2. Als Benutzer möchte ich Kategorien zuweisen können (z.B. Miete, Freizeit, Transport)
 3. Als Benutzer möchte ich Summen und Bilanzen für bestimmte Zeiträumen abrufen.
 4. Als Benutzer möchte ich die Einträge bearbeiten oder löschen können.
-5. Als Benutzer möchte ich Bilanze
+5. Als Benutzer möchte ich Bilanze einsehen können.
 
 **Use cases:**
 - Betrag erfassen (Einnahmen oder Ausgaben)
 - Summen nach Kategorien anzeigen
 - Bilanz Anzeigen
-- Einträge bearbeiten
+- Einträge bearbeiten/löschen
 - Programm beenden
 
 ## ✅ Project Requirements
@@ -47,11 +46,12 @@ Each app must meet the following three criteria in order to be accepted (see als
 
 > 🚧 In this section, document how your project fulfills each criterion.  
 ---
-The application interacts with the user via the console. Users can:
-- View the pizza menu
-- Select pizzas and quantities
-- See the running total
-- Receive an invoice generated as a file
+Die Anwendung interagiert über die Konsole mit dem Benutzer. Benutzer können: 
+ 1) Einnahmen hinzufügen
+ 2) Ausgaben hinzufügen
+ 3) Übersicht anzeigen
+ 4) Editieren
+ 5) Programm beenden
 
 ---
 
