@@ -1,5 +1,12 @@
 
-from funktionen import * # Stern importiert alle Funktionen von funktionen.py
+from ausgaben_hinzufuegen import * # Stern importiert alle Funktionen von den Funktionsdateien
+from datei_pruefen import *
+from datum_eingabe import *
+from editieren import *
+from einnahmen_hinzfuegen import *
+from uebersicht_anzeigen import *
+
+
 
 print("=== Willkommen zu deinem Budgetplaner ===")
 
