@@ -36,13 +36,13 @@ Example: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben
 
 Each app must meet the following three criteria in order to be accepted (see also the official project guidelines PDF on Moodle):
 
-1. Interactive app (console input)
-2. Data validation (input checking)
-3. File processing (read/write)
+1. Interaktive Anwendung (Konsoleneingabe)
+2. Datenvalidierung (Eingabeprüfung)
+3. Datenverarbeitung (Lesen/Schreiben)
 
 ---
 
-### 1. Interactive App (Console Input)
+### 1. Interaktive Anwendung (Konsoleneingabe)
 
 > 🚧 In this section, document how your project fulfills each criterion.  
 ---
@@ -56,25 +56,45 @@ Die Anwendung interagiert über die Konsole mit dem Benutzer. Benutzer können:
 ---
 
 
-### 2. Data Validation
+### 2. Datenvalidierung (Eingabeprüfung)
 
-The application validates all user input to ensure data integrity and a smooth user experience. This is implemented in `main-invoice.py` as follows:
+Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslose Benutzererfahrung zu gewährleisten. Dies ist im main.py und datei_pruefen.py wie folgt implementiert: 
 
-- **Menu selection:** When the user enters a pizza number, the program checks if the input is a digit and within the valid menu range:
+- **Funktions selektion:** Wenn der Benutzer eine Nummer eingibt prüft das Programm, ob die Eingabe innerhalb des gültigen Bereiches ist:
 	```python
-	if not choice.isdigit() or not (1 <= int(choice) <= len(menu)):
-			print("⚠️ Invalid choice.")
-			continue
-	```
-	This ensures only valid menu items can be ordered.
+	while True: 
+        auswahl = start_menu() #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
 
-- **Menu file validation:** When reading the menu file, the program checks for valid price values and skips invalid lines:
-	```python
-	try:
-			menu.append({"name": name, "size": size, "price": float(price)})
-	except ValueError:
-			print(f"⚠️ Skipping invalid line: {line.strip()}")
+        if auswahl == "1":
+            einnahmen_hinzufuegen()
+        elif auswahl == "2":
+            ausgaben_hinzufuegen()
+        elif auswahl == "3":
+            uebersicht_anzeigen()
+        elif auswahl == "4":
+            editieren()
+        elif auswahl == "5":
+            print("Vielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
+            break
+
+        else:
+            print(" X Ungültige Eingabe, bitte nochmals versuchen.")
 	```
+	Dies lässt nur gültige Zahlen durch, um die gewünschte Funktion auszulösen.
+
+- **CSV Datei validieren:** Beim ausführen jeder Funktion wird geprüft, ob schon eine CSV Datei existiert. Falls Ja wird die Fehlermeldung: FileExistsError übersprungen. Falls keine CSV Datei existiert wird eine neue erstellt mit dem Namen: 'budged.csv'
+```python
+ DATEI = 'budget.csv' 
+
+def datei_pruefen():    #prüfen, ob die CSV Datei exestiert, ansonsten wird diese erstellt
+    try:
+        with open (DATEI, 'x', newline = '') as file:       #öffnet die Datei im x Modus (erstellt neue Datei, wenn sie nicht existiert)
+            writer = csv.writer(file)                       #erstellt ein CSV Schreibobjekt
+            writer.writerow(['datum', 'betrag', 'typ', 'kategorie'])    #schreibt die spalten überschriften
+    except FileExistsError:            #falls die Datei schon existiert, tritt dieser Fehler auf
+        pass                                #Dann wird einfach nichts gemacht (Datei bleibt bestehen)
+	
+```
 
 - **Main menu options:** The main menu checks for valid options and handles invalid choices gracefully:
 	```python
@@ -89,7 +109,7 @@ These checks prevent crashes and guide the user to provide correct input, matchi
 ---
 
 
-### 3. File Processing
+### 3. Datenverarbeitung (Lesen/Schreiben)
 
 The application reads and writes data using files:
 
@@ -152,25 +172,15 @@ PizzaRP/
 These libraries are part of the Python standard library, so no external installation is required. They were chosen for their simplicity and effectiveness in handling file management tasks in a console application.
 
 
-## 👥 Team & Contributions
+## 👥 Team & Beiträge
 
-> 🚧 Fill in the names of all team members and describe their individual contributions below. Each student should be responsible for at least one part of the project.
-
-| Name       | Contribution                                 |
-|------------|----------------------------------------------|
-| Student A  | Menu reading (file input) and displaying menu|
-| Student B  | Order logic and data validation              |
-| Student C  | Invoice generation (file output) and slides  |
+| Name       			| Beitrag									   |
+|-----------------------|----------------------------------------------|
+|Asithan Supendran  	|Erstellung vom Hauptmenü, Einnahmefunktion, Aufteilung der funktionen,  
+|Filmon Samy			|               
+|Janath Balasubramaniam |   
 
 
-## 🤝 Contributing
-
-> 🚧 This is a template repository for student projects.  
-> 🚧 Do not change this section in your final submission.
-
-- Use this repository as a starting point by importing it into your own GitHub account.  
-- Work only within your own copy — do not push to the original template.  
-- Commit regularly to track your progress.
 
 ## 📝 License
 
