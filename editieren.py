@@ -1,5 +1,6 @@
 from datetime import datetime  
 from datei_pruefen import *
+from kategorieauswahl import *
 from datum_eingabe import *
 import csv 
 
@@ -9,6 +10,8 @@ def editieren():
     daten = []
     print('\n1) Eintrag löschen')
     print('2) Eintrag bearbeiten')
+
+    print('x) zurück')
 
     optionauswahl = input("\nBitte wähle 1 oder 2:")
 
@@ -22,76 +25,23 @@ def editieren():
                 break
             except ValueError:
                 print("Bitte gültigen Betrag eingeben!")
-            
-        print('Einnahme oder Ausgabe')
-        
+
+        print('Bitte Einnahme oder Ausgabe')
+
         while True:
-            AoE_auswahl = input('\nBitte Einnahme oder Ausgabe angeben:').strip()
+            AoE_auswahl = input('\nBitte Einnahme oder Ausgabe angeben: ').strip()
+
             if AoE_auswahl == 'Einnahme':
-                print('\nWähle eine Kategorie')
-
-                print('\n1) Lohn')
-                print('2) Sonstiges')
-
-                while True:
-                    kategorie_auswahl = input('\nBitte wähle eine Kategorie (1/2):')
-                    if kategorie_auswahl == '1':
-                        kategorie = 'Lohn'
-                        break
-                    elif kategorie_auswahl == '2':
-                        kategorie = 'Sonstiges'
-                        break
-                    else:
-                        print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+                kategorie = kategorieauswahl_einnahme()
                 break
 
             elif AoE_auswahl == 'Ausgabe':
-                
-                print('\nWähle eine Kategorie:')
+                kategorie = kategorieauswahl_ausgabe()
+                break
 
-                print('1) Transport')
-                print('2) Einkäufe')
-                print('3) Versicherungen')
-                print('4) Miete')
-                print('5) Steuern')
-                print('6) Freizeit')
-                print('7) Sparen')
-                print('8) Well being')
-                print('9) Sonstiges')
-                while True:
-                    kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1-9: ')
-                  
-                    if kategorie_auswahl == '1':
-                        kategorie = 'Transport'
-                        break
-                    elif kategorie_auswahl == '2':
-                        kategorie = 'Einkäufe'
-                        break
-                    elif kategorie_auswahl == '3':
-                        kategorie = 'Versicherungen'
-                        break
-                    elif kategorie_auswahl == '4':
-                        kategorie = 'Miete'
-                        break
-                    elif kategorie_auswahl == '5':
-                        kategorie = 'Steuern'
-                        break
-                    elif kategorie_auswahl == '6':                                                                                                                                                                                                                                             
-                        kategorie = 'Freizeit'
-                        break
-                    elif kategorie_auswahl == '7':
-                        kategorie = 'Sparen'
-                        break
-                    elif kategorie_auswahl == '8':
-                        kategorie = 'Well being'
-                        break
-                    elif kategorie_auswahl == '9':
-                        kategorie = 'Sonstiges'
-                        break
-                    else:
-                        print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
-            break
-   
+            else:
+                print('Ungültige Eingabe. Bitte "Einnahme" oder "Ausgabe" eingeben.')
+
 
         with open(DATEI, 'r', newline='') as file:
             reader = csv.DictReader(file)
@@ -139,68 +89,12 @@ def editieren():
         while True:
             AoE_auswahl = input('\nBitte Einnahme oder Ausgabe angeben:').strip()
             if AoE_auswahl == 'Einnahme':
-                print('\nWähle eine Kategorie')
-
-                print('\n1) Lohn')
-                print('2) Sonstiges')
-
-                while True:
-                    kategorie_auswahl = input('\nBitte wähle eine Kategorie 1/2:')
-                    if kategorie_auswahl == '1':
-                        kategorie = 'Lohn'
-                        break
-                    elif kategorie_auswahl == '2':
-                        kategorie = 'Sonstiges'
-                        break
-                    else:
-                        print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+                kategorie = kategorieauswahl_einnahme()
                 break
 
             elif AoE_auswahl == 'Ausgabe':
-                print('\nWähle eine Kategorie')
-
-                print('1) Transport')
-                print('2) Einkäufe')
-                print('3) Versicherungen')
-                print('4) Miete')
-                print('5) Steuern')
-                print('6) Freizeit')
-                print('7) Sparen')
-                print('8) Well being')
-                print('9) Sonstiges')
-                while True:
-                    kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1-9: ')
-                  
-                    if kategorie_auswahl == '1':
-                        kategorie = 'Transport'
-                        break
-                    elif kategorie_auswahl == '2':
-                        kategorie = 'Einkäufe'
-                        break
-                    elif kategorie_auswahl == '3':
-                        kategorie = 'Versicherungen'
-                        break
-                    elif kategorie_auswahl == '4':
-                        kategorie = 'Miete'
-                        break
-                    elif kategorie_auswahl == '5':
-                        kategorie = 'Steuern'
-                        break
-                    elif kategorie_auswahl == '6':                                                                                                                                                                                                                                             
-                        kategorie = 'Freizeit'
-                        break
-                    elif kategorie_auswahl == '7':
-                        kategorie = 'Sparen'
-                        break
-                    elif kategorie_auswahl == '8':
-                        kategorie = 'Well being'
-                        break
-                    elif kategorie_auswahl == '9':
-                        kategorie = 'Sonstiges'
-                        break
-                    else:
-                        print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
-            break
+                kategorie = kategorieauswahl_ausgabe()
+                break
             
 
         with open(DATEI, 'r', newline='') as file:
@@ -229,63 +123,13 @@ def editieren():
                  
                     while True:
                         if ziel_typ =='Einnahme':
-                            print('\n1) Lohn')
-                            print('2) Sonstiges')
-                            neue_kategorie_auswahl= input('Neue Kategorie (1/2) wählen:').strip()
-                            if neue_kategorie_auswahl=='':
-                                break
-                            elif neue_kategorie_auswahl=='1':
-                                neue_kategorie= 'Lohn'
-                                break
-                            elif neue_kategorie_auswahl=='2':
-                                neue_kategorie='Sonstiges'
-                                break
-                            else:
-                                print('Ungültige Eingabe, bitte 1 oder 2 wählen.')
+                            neue_kategorie = kategorieauswahl_einnahme()
+                            break
+
                         elif ziel_typ== 'Ausgabe':
-                                print('1) Transport')
-                                print('2) Einkäufe')
-                                print('3) Versicherungen')
-                                print('4) Miete')
-                                print('5) Steuern')
-                                print('6) Freizeit')
-                                print('7) Sparen')
-                                print('8) Well being')
-                                print('9) Sonstiges')
-                                
-                                neue_kategorie_auswahl= input('Neue Kategorie:').strip()
-                                if neue_kategorie_auswahl=='':
-                                    neue_kategorie=row['kategorie']
-                                    break
-                                elif neue_kategorie_auswahl == '1':
-                                    neue_kategorie = 'Transport'
-                                    break
-                                elif neue_kategorie_auswahl == '2':
-                                    neue_kategorie = 'Einkäufe'
-                                    break
-                                elif neue_kategorie_auswahl == '3':
-                                    neue_kategorie = 'Versicherungen'
-                                    break
-                                elif neue_kategorie_auswahl == '4':
-                                    neue_kategorie = 'Miete'
-                                    break
-                                elif neue_kategorie_auswahl == '5':
-                                    neue_kategorie = 'Steuern'
-                                    break
-                                elif neue_kategorie_auswahl == '6':                                                                                                                                                                                                                                             
-                                    neue_kategorie = 'Freizeit'
-                                    break
-                                elif neue_kategorie_auswahl == '7':
-                                    neue_kategorie = 'Sparen'
-                                    break
-                                elif neue_kategorie_auswahl == '8':
-                                    neue_kategorie = 'Well being'
-                                    break
-                                elif neue_kategorie_auswahl == '9':
-                                    neue_kategorie = 'Sonstiges'
-                                    break
-                                else:
-                                    print('Ungültige Eingabe, bitte eine Kategorie von 1-9 wählen')
+                            neue_kategorie = kategorieauswahl_ausgabe()
+                            break
+
                         else:
                             print('Ungültiger Typ angegeben. Bitte zuerst Einnahme oder Ausgabe eingeben')
                             break
@@ -316,3 +160,6 @@ def editieren():
             print('\nEintrag wurde bearbeitet')
         else:
             print('\n Kein Eintrag wurde bearbeitet oder gefunden')
+
+    elif optionauswahl == 'x':
+        return

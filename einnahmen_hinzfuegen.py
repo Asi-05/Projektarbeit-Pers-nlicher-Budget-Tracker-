@@ -1,6 +1,7 @@
 from datetime import datetime  
 from datei_pruefen import *
 from datum_eingabe import *
+from kategorieauswahl import *
 import csv 
 
 DATEI = 'budget.csv' 
@@ -29,25 +30,7 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
 
     datum = datum_eingabe()                 #Datum eingabe Funktion wird aufgerufen
 
-    '''Kategorie wählen'''
-    print('\nKategorie wählen:')        #zeigt dem benutzer die möglichen kategorien an
-    print('1) Lohn')                    #option 1 Lohn
-    print('2) Sonstiges')               #option 2 Sonstiges
-
-    print('x) Zurück zum Hauptmenu')
-
-    while True:     #wiederhole bis eine gültige kategorie gewählt wurde
-        kategorie_auswahl = input('Bitte wähle 1 oder 2: ')         #fragt nach der auswahl
-        if kategorie_auswahl == '1':                                #wenn 1 eingegeben wird
-            kategorie = 'Lohn'                                      #kategorie auf lohn setzen
-            break                                                       #schleife beenden
-        elif kategorie_auswahl == '2':                              #wenn 2 eingegeben wird                              
-            kategorie = 'Sonstiges'                                 #kategorie auf sonstiges setzen
-            break                                                       #schleife beenden
-        elif kategorie_auswahl == 'x':                               #zurück zum Hauptmenü
-            return
-        else:
-            print('Ungültige Eingabe, bitte 1 oder 2 wählen')           #Fehlermeldung bei falscher Eingabe
+    kategorie = kategorieauswahl_einnahme()
 
     '''In CSV Datei speichern'''
     with open(DATEI, 'a', newline='') as file:          #öffnet die datei im appendmodus ('a'), um daten hinzuzufügen
