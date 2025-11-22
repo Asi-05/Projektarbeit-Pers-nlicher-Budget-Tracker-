@@ -2,6 +2,7 @@
 from datetime import datetime  
 from datei_pruefen import *
 from datum_eingabe import *
+from kategorieauswahl import *
 import csv 
 
 
@@ -21,21 +22,7 @@ def uebersicht_anzeigen():
 
     if optionauswahl == '1':
 
-        print('\nWähle eine Kategorie')
-
-        print('\n1) Lohn')
-        print('2) Sonstiges')
-
-        while True:
-            kategorie_auswahl = input('\nBitte wähle 1 oder 2: ')
-            if kategorie_auswahl == '1':
-                kategorie = 'Lohn'
-                break
-            elif kategorie_auswahl == '2':
-                kategorie = 'Sonstiges'
-                break
-            else:
-                print('Ungültige Eingabe, bitte 1 oder 2 wählen')
+        kategorie = kategorieauswahl_gesamt()
 
 
         with open(DATEI, 'r', newline='') as file:  # öffnet datei im lesemodus und verhindert zusätzliche Lesezeilen
@@ -66,10 +53,18 @@ def uebersicht_anzeigen():
             print(' \nDas Enddatum darf nicht vor dem Startdatum liegen.')
             datum_bis = datum_eingabe('\nDatum bis (TT.MM.JJJJ): ')
 
-        # CSV-Datei auswerten
+            # CSV-Datei auswerten
         gesamt_einnahmen = 0
         gesamt_ausgaben = 0
         bilanz_lohn = 0
+        bilanz_transport = 0
+        bilanz_einkaeufe = 0
+        bilanz_versicherungen = 0
+        bilanz_miete = 0
+        bilanz_steuern = 0
+        bilanz_freizeit = 0
+        bilanz_sparen = 0
+        bilanz_wellbeing = 0
         bilanz_sonstiges = 0
 
         with open(DATEI, 'r', newline='') as file:
@@ -85,19 +80,51 @@ def uebersicht_anzeigen():
                             gesamt_einnahmen += betrag
                         else:
                             gesamt_ausgaben += betrag
+                    # Gesamtbilanz
+                    if row['typ'] == 'Einnahme':
+                        gesamt_einnahmen += betrag
+                    else:
+                        gesamt_ausgaben += betrag
 
                         # Kategorie-spezifische Bilanz
-                        if row['kategorie'] == 'Lohn':
-                            bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
-                        elif row['kategorie'] == 'Sonstiges':
-                            bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
+
+                    # Kategorie-spezifische Bilanz
+                    if row['kategorie'] == 'Lohn':
+                        bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Transport':
+                        bilanz_transport += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Einkäufe':
+                        bilanz_einkaeufe += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Versicherungen':
+                        bilanz_versicherungen += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Miete':
+                        bilanz_miete += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Steuern':
+                        bilanz_steuern += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Freizeit':
+                        bilanz_freizeit += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Sparen':
+                        bilanz_sparen += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Well being':
+                        bilanz_wellbeing += betrag if row['typ'] == 'Einnahme' else -betrag
+                    elif row['kategorie'] == 'Sonstiges':
+                        bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
 
         print(f'\nBilanz vom {datum_von.strftime("%d.%m.%Y")} bis {datum_bis.strftime("%d.%m.%Y")}:')
         print(f'\nLohn: {bilanz_lohn:.2f} CHF')
-        print(f'Sonstiges: {bilanz_sonstiges:.2f} CHF')
+        print(f'\nTransport: {bilanz_transport:.2f} CHF')
+        print(f'\nEinkäufe: {bilanz_einkaeufe:.2f} CHF')
+        print(f'\nVersicherungen: {bilanz_versicherungen:.2f} CHF')
+        print(f'\nMiete: {bilanz_miete:.2f} CHF')
+        print(f'\nSteuern: {bilanz_steuern:.2f} CHF')
+        print(f'\nFreizeiz: {bilanz_freizeit:.2f} CHF')
+        print(f'\nSparen: {bilanz_sparen:.2f} CHF')
+        print(f'\nWell being: {bilanz_wellbeing:.2f} CHF')
+        print(f'\nSonstiges: {bilanz_sonstiges:.2f} CHF')
+
         print(f'\nEinnahmen: {gesamt_einnahmen:.2f} CHF')
         print(f'Ausgaben: {gesamt_ausgaben:.2f} CHF')
-        print(f'\nGesamtbilanz: {gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
 
+        print(f'\nGesamtbilanz: {gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
     elif optionauswahl == 'x':
         return

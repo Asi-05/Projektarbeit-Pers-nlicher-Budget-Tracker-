@@ -1,7 +1,8 @@
 from datetime import datetime  
 from datei_pruefen import *
 from datum_eingabe import *
-import csv 
+import csv
+from kategorieauswahl import *
 
 
 
@@ -26,52 +27,7 @@ def ausgaben_hinzufuegen():
 
     datum = datum_eingabe()      #Datum eingabe Funktion wird aufgerufen
 
-    '''Kategorie wählen'''
-    print('\nKategorie wählen:') 
-    print('1) Transport')
-    print('2) Einkäufe')
-    print('3) Versicherungen')
-    print('4) Miete')
-    print('5) Steuern')
-    print('6) Freizeit')
-    print('7) Sparen')
-    print('8) Well being')
-    print('9) Sonstiges')
-    print('x) Zurück zum Hauptmenu')
-    
-    while True: 
-        kategorie_auswahl = input('Bitte wähle eine Kategorie: ')
-        if kategorie_auswahl == '1':
-            kategorie = 'Transport'
-            break
-        elif kategorie_auswahl == '2':
-            kategorie = 'Einkäufe'
-            break
-        elif kategorie_auswahl == '3':
-            kategorie = 'Versicherungen'
-            break
-        elif kategorie_auswahl == '4':
-            kategorie = 'Miete'
-            break
-        elif kategorie_auswahl == '5':
-            kategorie = 'Steuern'
-            break
-        elif kategorie_auswahl == '6':
-            kategorie = 'Freizeit'
-            break
-        elif kategorie_auswahl == '7':
-            kategorie = 'Sparen'
-            break
-        elif kategorie_auswahl == '8':
-            kategorie = 'Well being'
-            break
-        elif kategorie_auswahl == '9':
-            kategorie = 'Sonstiges'
-            break
-        elif kategorie_auswahl == 'x':
-            return
-        else:
-            print('Ungültige Eingabe, bitte wähle eine gültige Kategorie')
+    kategorie = kategorieauswahl_ausgabe()
 
     '''In CSV Datei speichern'''
     with open(DATEI, 'a', newline='') as file:
