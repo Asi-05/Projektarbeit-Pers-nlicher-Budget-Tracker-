@@ -8,6 +8,7 @@ from uebersicht_anzeigen import *
 
 
 
+
 print("=== Willkommen zu deinem Budgetplaner ===")
 
 def main():
@@ -19,7 +20,7 @@ def main():
         print("1) Einnahmen hinzufügen")
         print("2) Ausgaben hinzufügen")
         print("3) Übersicht anzeigen")
-        print("4) Edit")
+        print("4) Editieren")
         print("5) Programm beenden")
     
         choice = input("Bitte wähle eine Option (1-5): ")

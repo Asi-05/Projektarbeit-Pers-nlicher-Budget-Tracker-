@@ -23,7 +23,7 @@ def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufüg
             return # zurück ins hauptmenu
 
         try:
-            betrag = float(eingabe) #fragt den betrag ab und wandelt ihn in ein float um
+            betrag = float(eingabe)                 #fragt den betrag ab und wandelt ihn in ein float um
             break                                   #beendet die schleife, wenn erfolgreich
         except ValueError:                          #wenn keine gültige zahl eingegeben wurde
             print("Bitte gültigen Betrag eingeben!")#fehlermeldug zeigen
