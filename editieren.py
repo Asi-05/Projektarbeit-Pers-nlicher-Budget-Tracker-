@@ -68,7 +68,7 @@ def editieren():
             writer.writerows(neue_daten)
         
         if geloescht:
-            print('\n Eintrag wurde gelöscht')
+            print('\nEintrag wurde gelöscht')
         else:
             print('\nKein Eintrag wurde gelöscht oder gefunden')
 

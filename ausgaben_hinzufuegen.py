@@ -34,6 +34,6 @@ def ausgaben_hinzufuegen():
         writer = csv.writer(file)
         writer.writerow([datum, betrag, 'Ausgabe',kategorie])
 
-    print(f'\n Ausgabe von {betrag:.2f} CHF {kategorie} wurde gespeichert. \n')
+    print(f'\nAusgabe von {betrag:.2f} CHF {kategorie} wurde gespeichert. \n')
 
 

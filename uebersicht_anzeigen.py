@@ -47,8 +47,8 @@ def uebersicht_anzeigen():
     elif optionauswahl == '2':
 
 
-        datum_von = datum_eingabe('\nDatum von (TT.MM.JJJJ): ')
-        datum_bis = datum_eingabe('Datum bis (TT.MM.JJJJ): ')
+        datum_von = datum_eingabe_uerbesichtanzeigen('\nDatum bis (TT.MM.JJJJ): ')
+        datum_bis = datum_eingabe_uerbesichtanzeigen('\nDatum bis (TT.MM.JJJJ): ')
         while datum_bis < datum_von:
             print(' \nDas Enddatum darf nicht vor dem Startdatum liegen.')
             datum_bis = datum_eingabe('\nDatum bis (TT.MM.JJJJ): ')

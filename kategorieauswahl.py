@@ -1,17 +1,6 @@
 def kategorieauswahl_ausgabe():
     print('\nWähle eine Kategorie:')
 
-    print('1) Transport')
-    print('2) Einkäufe')
-    print('3) Versicherungen')
-    print('4) Miete')
-    print('5) Steuern')
-    print('6) Freizeit')
-    print('7) Sparen')
-    print('8) Well being')
-    print('9) Sonstiges')
-    print('x) zurück')
-
     kategorien = {
         '1': 'Transport',
         '2': 'Einkäufe',
