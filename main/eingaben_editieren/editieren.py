@@ -1,21 +1,10 @@
 from datetime import datetime  
-from datei_pruefen import *
-from kategorieauswahl import *
-from datum_eingabe import *
+from datei_kontrollieren.datei_pruefen import *
+from kategorie_auswahl.kategorieauswahl import *
+from datum_eingabe.datum_eingabe import *
 import csv 
 
-def editieren():
-    
-    datei_pruefen()
-    daten = []
-    print('\n1) Eintrag löschen')
-    print('2) Eintrag bearbeiten')
-
-    print('x) zurück')
-
-    optionauswahl = input("\nBitte wähle 1 oder 2:")
-
-    if optionauswahl == '1':
+def eintrag_loeschen(daten):
 
         datum = datum_eingabe()
         
@@ -73,6 +62,20 @@ def editieren():
             print('\nKein Eintrag wurde gelöscht oder gefunden')
 
 
+
+def editieren():
+    
+    datei_pruefen()
+    daten = []
+    print('\n1) Eintrag löschen')
+    print('2) Eintrag bearbeiten')
+
+    print('x) zurück')
+
+    optionauswahl = input("\nBitte wähle 1 oder 2:")
+
+    if optionauswahl == '1':
+        eintrag_loeschen(daten)
     elif optionauswahl == '2':
         
         datum = datum_eingabe()

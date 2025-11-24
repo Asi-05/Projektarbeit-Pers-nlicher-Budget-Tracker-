@@ -1,8 +1,8 @@
 
 from datetime import datetime  
-from datei_pruefen import *
-from datum_eingabe import *
-from kategorieauswahl import *
+from datei_kontrollieren.datei_pruefen import *
+from datum_eingabe.datum_eingabe import *
+from kategorie_auswahl.kategorieauswahl import *
 import csv 
 
 

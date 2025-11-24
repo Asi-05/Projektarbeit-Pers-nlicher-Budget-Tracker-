@@ -1,5 +1,5 @@
 from datetime import datetime  
-from datei_pruefen import *
+from datei_kontrollieren.datei_pruefen import *
 import csv 
 
 def datum_eingabe(): 
