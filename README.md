@@ -56,7 +56,7 @@ Die Anwendung interagiert über die Konsole mit dem Benutzer. Benutzer können:
 
 Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslose Benutzererfahrung zu gewährleisten. Dies ist im main.py und datei_pruefen.py wie folgt implementiert: 
 
-- **Funktions selektion:** Wenn der Benutzer eine Nummer eingibt prüft das Programm, ob die Eingabe innerhalb des gültigen Bereiches ist:
+- **Funktions selektion:** Wenn der Benutzer eine Nummer eingibt prüft das Programm, ob sich die Eingabe innerhalb des gültigen Bereiches befindet :
 	```python
 	print("=== Willkommen zu deinem Budgetplaner ===")
 
