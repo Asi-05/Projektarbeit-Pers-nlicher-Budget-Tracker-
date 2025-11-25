@@ -160,8 +160,8 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 ### Wie funktioniert das Programm
 > 🚧 Adjust if needed.
 1. Repository in **GitHub Codespaces** öffnen
-2. Den **Terminal** öffnen
-3. Run:
+2. **Terminal** öffnen
+3. Eingeben:
 	```bash
 	python3 main.py
 	```
