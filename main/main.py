@@ -1,7 +1,7 @@
 from einnahmen_ausgaben.ausgaben_hinzufuegen import * # Stern importiert alle Funktionen von den Funktionsdateien
 from datei_kontrollieren.datei_pruefen import *
 from datum_eingabe.datum_eingabe import *
-from eingaben_editieren.editieren import *
+from eingaben_editieren import *
 from einnahmen_ausgaben.einnahmen_hinzfuegen import *
 from uebersicht_einnahmen_ausgaben.uebersicht_anzeigen import *
 
