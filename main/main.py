@@ -6,8 +6,6 @@ from einnahmen_ausgaben.einnahmen_hinzfuegen import *
 from uebersicht_einnahmen_ausgaben.uebersicht_anzeigen import *
 
 
-
-
 print("=== Willkommen zu deinem Budgetplaner ===")
 
 def main():

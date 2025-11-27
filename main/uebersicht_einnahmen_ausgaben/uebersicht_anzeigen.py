@@ -41,7 +41,7 @@ def uebersicht_anzeigen():
 
                     print(f"{counter:<10} {row['datum']:<12} {row['betrag']:<12} {row['typ']:<10} ")   # printet die werte mit den gleichem abstand wie die namen der Spalten
 
-        print(">>> Übersicht wird angezeigt")
+        
 
 
     elif optionauswahl == '2':
