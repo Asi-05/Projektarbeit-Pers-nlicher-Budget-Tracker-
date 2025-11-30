@@ -37,7 +37,7 @@ def main():
         elif auswahl == "3":
             uebersicht_anzeigen()
         elif auswahl == "4":
-            editieren()
+            eingaben_editieren()
         elif auswahl == "5":
             print("Vielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
             break
