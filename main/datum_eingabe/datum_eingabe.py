@@ -1,7 +1,6 @@
 from datetime import datetime  
-from datei_pruefen import *
+from datei_kontrollieren.datei_pruefen import *
 import csv 
-
 
 def datum_eingabe(): 
     while True:  
@@ -13,3 +12,14 @@ def datum_eingabe():
     
         except ValueError:                                              #falls das datum ungültig ist
             print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
+
+
+def datum_eingabe_uerbesichtanzeigen(prompt):
+    while True:
+        eingabe = input(prompt).strip()
+        try:
+            datum_obj = datetime.strptime(eingabe, '%d.%m.%Y')
+            return datum_obj   # Wichtig: direkt ein datetime-Objekt zurückgeben!
+        except ValueError:
+            print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
+
