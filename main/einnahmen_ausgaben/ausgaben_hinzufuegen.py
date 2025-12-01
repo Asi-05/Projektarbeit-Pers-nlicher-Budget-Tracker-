@@ -22,6 +22,11 @@ def ausgaben_hinzufuegen():
 
         try:
             betrag = float(eingabe)
+            
+            if betrag < 0:
+                print('Bitte Positiven Betrag eingeben.')
+                continue
+            
             break
         except ValueError:
             print("Bitte gültigen Betrag eingeben!")
