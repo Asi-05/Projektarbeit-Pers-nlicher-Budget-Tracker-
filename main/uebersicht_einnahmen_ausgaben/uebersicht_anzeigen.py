@@ -111,20 +111,20 @@ def uebersicht_anzeigen():
                         bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
 
         print(f'\nBilanz vom {datum_von.strftime("%d.%m.%Y")} bis {datum_bis.strftime("%d.%m.%Y")}:')
-        print(f'\nLohn: {bilanz_lohn:.2f} CHF')
-        print(f'\nTransport: {bilanz_transport:.2f} CHF')
-        print(f'\nEinkäufe: {bilanz_einkaeufe:.2f} CHF')
-        print(f'\nVersicherungen: {bilanz_versicherungen:.2f} CHF')
-        print(f'\nMiete: {bilanz_miete:.2f} CHF')
-        print(f'\nSteuern: {bilanz_steuern:.2f} CHF')
-        print(f'\nFreizeiz: {bilanz_freizeit:.2f} CHF')
-        print(f'\nSparen: {bilanz_sparen:.2f} CHF')
-        print(f'\nWell being: {bilanz_wellbeing:.2f} CHF')
-        print(f'\nSonstiges: {bilanz_sonstiges:.2f} CHF')
+        print(f'\nLohn: \t\t\t{bilanz_lohn:.2f} CHF')
+        print(f'\nTransport: \t\t{bilanz_transport:.2f} CHF')
+        print(f'\nEinkäufe: \t\t{bilanz_einkaeufe:.2f} CHF')
+        print(f'\nVersicherungen: \t{bilanz_versicherungen:.2f} CHF')
+        print(f'\nMiete: \t\t\t{bilanz_miete:.2f} CHF')
+        print(f'\nSteuern: \t\t{bilanz_steuern:.2f} CHF')
+        print(f'\nFreizeiz: \t\t{bilanz_freizeit:.2f} CHF')
+        print(f'\nSparen: \t\t{bilanz_sparen:.2f} CHF')
+        print(f'\nWell being: \t\t{bilanz_wellbeing:.2f} CHF')
+        print(f'\nSonstiges: \t\t{bilanz_sonstiges:.2f} CHF')
 
-        print(f'\nEinnahmen: {gesamt_einnahmen:.2f} CHF')
-        print(f'Ausgaben: {gesamt_ausgaben:.2f} CHF')
+        print(f'\nEinnahmen: \t\t{gesamt_einnahmen:.2f} CHF')
+        print(f'Ausgaben: \t\t{gesamt_ausgaben:.2f} CHF')
 
-        print(f'\nGesamtbilanz: {gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
+        print(f'\nGesamtbilanz: \t\t{gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
     elif optionauswahl == 'x':
         return

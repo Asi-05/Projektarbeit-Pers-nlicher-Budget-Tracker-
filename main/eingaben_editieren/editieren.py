@@ -183,7 +183,7 @@ def editieren(): #definiert funktion editieren
         if bearbeitet: #falls bearbeitet
             print('\nEintrag wurde bearbeitet')
         else:
-            print('\n Kein Eintrag wurde bearbeitet oder gefunden')
+            print('\nKein Eintrag wurde bearbeitet oder gefunden')
 
     elif optionauswahl == 'x':
         return
