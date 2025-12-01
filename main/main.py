@@ -9,7 +9,7 @@ from uebersicht_einnahmen_ausgaben.uebersicht_anzeigen import *
 print("=== Willkommen zu deinem Budgetplaner ===")
 
 def main():
-    """Menü ..."""
+    """Hauptmenü"""
 
 #Funktion für Menü
     def start_menu(): #definiert die Funktoin Start mit Namen start_menu
