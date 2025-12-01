@@ -7,7 +7,7 @@ from kategorie_auswahl.kategorieauswahl import *
 
 
 def ausgaben_hinzufuegen():
-    '''funktion, um ausgaben hinzuzufügen'''
+    '''Funktion, um ausgaben hinzuzufügen'''
     datei_pruefen() #Geht zurück zur Funktion Datei überprüfen und checkt 
     #ob es die Datei schon gibt und ansonsten erstellt sie eine neue
     print('\n====Ausgabe Hinzufügen====')

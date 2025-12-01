@@ -5,6 +5,7 @@ from datum_eingabe.datum_eingabe import * #importiert funktion datum eingabe mit
 import csv 
 
 def eintrag_loeschen(daten): #definiert die funktion zur direkten Löschung
+        '''Funktion um einträge zu löschen'''
 
         datum = datum_eingabe() #ruft funktion datum eingabe auf
         
@@ -67,6 +68,7 @@ def eintrag_loeschen(daten): #definiert die funktion zur direkten Löschung
 
 
 def editieren(): #definiert funktion editieren
+    '''Funktion um einträge zu bearbeiten'''
     
     datei_pruefen() #stellt sicher dass die csv datei existiert
     daten = [] #für fehlervermeidung

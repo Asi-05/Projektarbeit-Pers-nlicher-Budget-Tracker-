@@ -3,7 +3,7 @@ import csv
 DATEI = 'budget.csv' 
 
 def datei_pruefen():    #prüfen, ob die CSV Datei existiert, ansonsten wird diese erstellt
-    '''CSV Datei Prüfen'''
+    '''Funktion um CSV Datei zu prüfen'''
     try:
         with open (DATEI, 'x', newline = '') as file:                   #öffnet die Datei im x Modus (erstellt neue Datei, wenn sie nicht existiert)
             writer = csv.writer(file)                                   #erstellt ein CSV Schreibobjekt

@@ -1,5 +1,5 @@
 def kategorieauswahl_ausgabe():
-    print('\nWähle eine Kategorie:')
+    '''Funktion für Kategorieauswahl'''
 
     kategorien = {
         '1': 'Transport',
@@ -59,19 +59,6 @@ def kategorieauswahl_einnahme():
             print('Ungültige Eingabe, bitte 1 oder 2 wählen.')
 
 def kategorieauswahl_gesamt():
-    print('\nWähle eine Kategorie:')
-
-    print('\n1) Lohn')
-    print('2) Transport')
-    print('3) Einkäufe')
-    print('4) Versicherungen')
-    print('5) Miete')
-    print('6) Steuern')
-    print('7) Freizeit')
-    print('8) Sparen')
-    print('9) Well being')
-    print('10) Sonstiges')
-    print('x) zurück')
 
     kategorien = {
         '1': 'Lohn',

@@ -7,7 +7,7 @@ import csv
 DATEI = 'budget.csv' 
 
 def einnahmen_hinzufuegen():        #funktion, um eine neue einnahme hinzuzufügen
-    """funktion, um eine neue einnahme hinzuzufügen"""
+    """Funktion, um eine neue einnahme hinzuzufügen"""
     datei_pruefen()                 #ruft zuerst datei_pruefen() auf, um sicherzustellen, dass die CSV-Datei existiert
 
     print('\n ===== Einnahme hinzufügen =====')

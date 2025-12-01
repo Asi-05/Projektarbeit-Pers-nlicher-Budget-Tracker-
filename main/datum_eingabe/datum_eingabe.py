@@ -2,7 +2,8 @@ from datetime import datetime
 from datei_kontrollieren.datei_pruefen import *
 import csv 
 
-def datum_eingabe(): 
+def datum_eingabe():
+    '''Funktion um datum einzugeben''' 
     while True:  
         datum_eingabe = input('Datum (DD. MM. YYYY): ').strip()         #fragt das Datum ab und entfernt die leerzeichen
         try:                                                            
