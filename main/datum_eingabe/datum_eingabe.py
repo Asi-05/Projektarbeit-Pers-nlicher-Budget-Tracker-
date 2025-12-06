@@ -20,7 +20,7 @@ def datum_eingabe_uerbesichtanzeigen(prompt):
         eingabe = input(prompt).strip()
         try:
             datum_obj = datetime.strptime(eingabe, '%d.%m.%Y')
-            return datum_obj   # Wichtig: direkt ein datetime-Objekt zurückgeben!
+            return datum_obj                                            #Wichtig: direkt ein datetime-Objekt zurückgeben!
         except ValueError:
             print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
 

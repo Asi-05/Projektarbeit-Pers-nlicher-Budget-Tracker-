@@ -81,7 +81,7 @@ def kategorieauswahl_gesamt():
         print(f'{key}) {name}')
 
     while True:
-        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–9: ').strip()
+        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–10: ').strip()
 
         if kategorie_auswahl in kategorien:
             kategorie = kategorien[kategorie_auswahl]
@@ -89,7 +89,7 @@ def kategorieauswahl_gesamt():
         elif kategorie_auswahl == 'x':
             return
         else:
-            print('Ungültige Eingabe. Bitte nur Zahlen von 1 bis 9 eingeben.')
+            print('Ungültige Eingabe. Bitte nur Zahlen von 1 bis 10 eingeben.')
 
     print(f'\nKategorie gewählt: {kategorie}')
     return kategorie

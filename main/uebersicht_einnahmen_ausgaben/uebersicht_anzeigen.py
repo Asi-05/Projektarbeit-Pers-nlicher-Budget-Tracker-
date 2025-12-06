@@ -7,7 +7,7 @@ import csv
 
 
 def uebersicht_anzeigen():
-    datei_pruefen() #funktion dateiprüfen wird abgeruft
+    datei_pruefen()                                                                                 #funktion dateiprüfen wird abgeruft
 
     counter = 0
 
@@ -25,13 +25,13 @@ def uebersicht_anzeigen():
         kategorie = kategorieauswahl_gesamt()
 
 
-        with open(DATEI, 'r', newline='') as file:  # öffnet datei im lesemodus und verhindert zusätzliche Lesezeilen
+        with open(DATEI, 'r', newline='') as file:                                                  #öffnet datei im lesemodus und verhindert zusätzliche Lesezeilen
 
-            reader = csv.DictReader(file) # erstellt CSV-Reader, der jede Zeile als ein Wörterbuch einliest, man kann aud die werte direkt zugreifen.
+            reader = csv.DictReader(file)                                                           #erstellt CSV-Reader, der jede Zeile als ein Wörterbuch einliest, man kann aud die werte direkt zugreifen.
 
             print(f'\nKategorie: {kategorie}')
 
-            print(f"\n{'Counter':<10} {'Datum':<12} {'Betrag':<12} {'Typ':<10}")  # geht jede Zeile durch #EVTL. SUMME HINZUFÜGEN
+            print(f"\n{'Counter':<10} {'Datum':<12} {'Betrag':<12} {'Typ':<10}")                    #geht jede Zeile durch #EVTL. SUMME HINZUFÜGEN
             print("-" * 70)
             for row in reader:
 
@@ -39,7 +39,7 @@ def uebersicht_anzeigen():
 
                     counter += 1
 
-                    print(f"{counter:<10} {row['datum']:<12} {row['betrag']:<12} {row['typ']:<10} ")   # printet die werte mit den gleichem abstand wie die namen der Spalten
+                    print(f"{counter:<10} {row['datum']:<12} {row['betrag']:<12} {row['typ']:<10} ") #printet die werte mit den gleichem abstand wie die namen der Spalten
 
         
 
@@ -47,14 +47,14 @@ def uebersicht_anzeigen():
     elif optionauswahl == '2':
 
 
-        datum_von = datum_eingabe_uerbesichtanzeigen('\nDatum bis (TT.MM.JJJJ): ')
+        datum_von = datum_eingabe_uerbesichtanzeigen('\nDatum von (TT.MM.JJJJ): ')
         datum_bis = datum_eingabe_uerbesichtanzeigen('\nDatum bis (TT.MM.JJJJ): ')
         while datum_bis < datum_von:
             print(' \nDas Enddatum darf nicht vor dem Startdatum liegen.')
             datum_bis = datum_eingabe('\nDatum bis (TT.MM.JJJJ): ')
 
-            # CSV-Datei auswerten
-        gesamt_einnahmen = 0
+        #CSV-Datei auswerten    
+        gesamt_einnahmen = 0                                                                       
         gesamt_ausgaben = 0
         bilanz_lohn = 0
         bilanz_transport = 0
@@ -75,20 +75,20 @@ def uebersicht_anzeigen():
                     betrag = float(row['betrag'])
                     if row['kategorie'] == 'Lohn':
 
-                        # Gesamtbilanz
+                        #Gesamtbilanz
                         if row['typ'] == 'Einnahme':
                             gesamt_einnahmen += betrag
                         else:
                             gesamt_ausgaben += betrag
-                    # Gesamtbilanz
+                    #Gesamtbilanz
                     if row['typ'] == 'Einnahme':
                         gesamt_einnahmen += betrag
                     else:
                         gesamt_ausgaben += betrag
 
-                        # Kategorie-spezifische Bilanz
+                        #Kategorie-spezifische Bilanz
 
-                    # Kategorie-spezifische Bilanz
+                    #Kategorie-spezifische Bilanz
                     if row['kategorie'] == 'Lohn':
                         bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
                     elif row['kategorie'] == 'Transport':
