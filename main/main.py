@@ -1,18 +1,15 @@
-
-from ausgaben_hinzufuegen import * # Stern importiert alle Funktionen von den Funktionsdateien
-from datei_pruefen import *
-from datum_eingabe import *
-from editieren import *
-from einnahmen_hinzfuegen import *
-from uebersicht_anzeigen import *
-
-
+from einnahmen_ausgaben.ausgaben_hinzufuegen import * # Stern importiert alle Funktionen von den Funktionsdateien
+from datei_kontrollieren.datei_pruefen import *
+from datum_eingabe.datum_eingabe import *
+from eingaben_editieren.editieren import *
+from einnahmen_ausgaben.einnahmen_hinzfuegen import *
+from uebersicht_einnahmen_ausgaben.uebersicht_anzeigen import *
 
 
 print("=== Willkommen zu deinem Budgetplaner ===")
 
 def main():
-    
+    """Hauptmenü"""
 
 #Funktion für Menü
     def start_menu(): #definiert die Funktoin Start mit Namen start_menu
@@ -24,11 +21,12 @@ def main():
         print("5) Programm beenden")
     
         choice = input("Bitte wähle eine Option (1-5): ")
+        # choice ...
         return choice #choice wird gemäss eingabe vom User wiedergegeben
 
 
 
-#Hauptprogramm mit Schleife
+    # Hauptprogramm mit Schleife
     while True: 
         auswahl = start_menu() #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
 

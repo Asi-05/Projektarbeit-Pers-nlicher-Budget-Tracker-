@@ -1,12 +1,13 @@
 from datetime import datetime  
-from datei_pruefen import *
-from datum_eingabe import *
+from datei_kontrollieren.datei_pruefen import *
+from datum_eingabe.datum_eingabe import *
 import csv
-from kategorieauswahl import *
+from kategorie_auswahl.kategorieauswahl import *
 
 
 
 def ausgaben_hinzufuegen():
+    '''funktion, um ausgaben hinzuzufügen'''
     datei_pruefen() #Geht zurück zur Funktion Datei überprüfen und checkt 
     #ob es die Datei schon gibt und ansonsten erstellt sie eine neue
     print('\n====Ausgabe Hinzufügen====')
@@ -34,6 +35,6 @@ def ausgaben_hinzufuegen():
         writer = csv.writer(file)
         writer.writerow([datum, betrag, 'Ausgabe',kategorie])
 
-    print(f'\n Ausgabe von {betrag:.2f} CHF {kategorie} wurde gespeichert. \n')
+    print(f'\nAusgabe von {betrag:.2f} CHF {kategorie} wurde gespeichert. \n')
 
 
