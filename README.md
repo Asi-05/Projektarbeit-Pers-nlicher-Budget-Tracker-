@@ -4,16 +4,14 @@ Dieses Projekt hat folgende Ziele:
 Einen personellen Budgetplaner programmieren
 -
 
-## 📝 Analysis
+## 📝 Analyse
 
 **Problem**
-> 🚧 Describe the real-world problem your application solves. (Not HOW, but WHAT)
 
 Viele Menschen möchten ihre persönlichen Finanzen besser verwalten, haben aber keine einfache Möglichkeit ihre Einnahmen und Ausgaben zu erfassen und übersichtlich darzustellen. Eine manuelle Nachführung mit Tabellen ist mühsam und fehleranfällig.
 
 
-**Scenario**
-> 🚧 Describe when and how a user will use your application
+**Szenario**
 
 Beispiel: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
 
@@ -178,7 +176,6 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 ```
 
 ### Wie funktioniert das Programm
-> 🚧 Adjust if needed.
 1. Repository in **GitHub Codespaces** öffnen
 2. **Terminal** öffnen
 3. Eingeben:
@@ -194,11 +191,11 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 
 ## 👥 Team & Beiträge
 
-| Name       			| Beitrag									   																				|
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
-|Asithan Supendran  	|Erstellung vom Hauptmenü, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces 
-|Filmon Samy			|               
-|Janath Balasubramaniam |   
+| Name       			| Beitrag									   																	   |
+|-----------------------|------------------------------------------------------------------------------------------------------------------|
+|Asithan Supendran  	|Hauptmenüfunktion, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces |
+|Filmon Samy			|Editierfunktion, Ausgabenfunktion, Löschen Funktion 															   |              
+|Janath Balasubramaniam |Kategorie Auswahl Funktion, Übersichtsfunktion, Datumeingabe Funktion 											   |  
 
 
 

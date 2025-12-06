@@ -7,26 +7,31 @@ from kategorie_auswahl.kategorieauswahl import *
 
 
 def ausgaben_hinzufuegen():
-    '''funktion, um ausgaben hinzuzufügen'''
-    datei_pruefen() #Geht zurück zur Funktion Datei überprüfen und checkt 
-    #ob es die Datei schon gibt und ansonsten erstellt sie eine neue
+    '''Funktion, um ausgaben hinzuzufügen'''
+    datei_pruefen()                                         #Geht zurück zur Funktion Datei überprüfen und checkt 
+                                                            #ob es die Datei schon gibt und ansonsten erstellt sie eine neue
     print('\n====Ausgabe Hinzufügen====')
 
     print('x) Zurück zum Hauptmenu')
 
-    while True: #Betrag abfragen
+    while True:                                             #Betrag abfragen
         eingabe = input("Betrag (CHF): ").strip()
 
         if eingabe.lower() == 'x':
-            return # zurück zum Hauptmenu
+            return                                          #zurück zum Hauptmenu
 
         try:
             betrag = float(eingabe)
+            
+            if betrag < 0:
+                print('Bitte positiven Betrag eingeben.')
+                continue
+            
             break
         except ValueError:
             print("Bitte gültigen Betrag eingeben!")
 
-    datum = datum_eingabe()      #Datum eingabe Funktion wird aufgerufen
+    datum = datum_eingabe()                                 #Datum eingabe Funktion wird aufgerufen
 
     kategorie = kategorieauswahl_ausgabe()
 
