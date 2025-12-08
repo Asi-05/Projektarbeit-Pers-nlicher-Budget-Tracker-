@@ -1,6 +1,8 @@
 def kategorieauswahl_ausgabe():
     '''Funktion für Kategorieauswahl (Ausgabe)'''
 
+
+    #Ausgabe-Kategorien in einem Dicitionary gelistet
     kategorien = {
         '1': 'Transport',
         '2': 'Einkäufe',
@@ -15,14 +17,14 @@ def kategorieauswahl_ausgabe():
     }
 
     print('\nWähle eine Kategorie:')
-    for key, name in kategorien.items():
+    for key, name in kategorien.items():                                                #printet die Variable Kategorie Key und den Wert aus
         print(f'{key}) {name}')
 
     while True:
-        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–9: ').strip()
+        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–9: ').strip()     #verlangt input vom User und speichert diese als variable
 
-        if kategorie_auswahl in kategorien:
-            kategorie = kategorien[kategorie_auswahl]
+        if kategorie_auswahl in kategorien:                                             #prüft ob der Key im Dictionary vorhanden ist
+            kategorie = kategorien[kategorie_auswahl]                                   #weist der variable kategorie den neuen wert zu
             break
         elif kategorie_auswahl == 'x':
             return
@@ -46,7 +48,7 @@ def kategorieauswahl_einnahme():
         kategorie_auswahl = input('\nBitte wähle eine Kategorie (1/2): ').strip()
 
 
-
+        #Überprüfung der Eingabe
         if kategorie_auswahl == '1':
             return 'Lohn'
 
@@ -61,7 +63,7 @@ def kategorieauswahl_einnahme():
 
 def kategorieauswahl_gesamt():
     '''Funktion für Kategorieauswahl (Gesamt)'''
-
+    # Alle Kategorien in einem Dicitionary gelistet
     kategorien = {
         '1': 'Lohn',
         '2': 'Transport',
@@ -78,13 +80,13 @@ def kategorieauswahl_gesamt():
 
     print('\nWähle eine Kategorie:')
     for key, name in kategorien.items():
-        print(f'{key}) {name}')
+        print(f'{key}) {name}')                                                         #printet die Variable Kategorie Key und den Wert aus
 
     while True:
         kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–10: ').strip()
 
-        if kategorie_auswahl in kategorien:
-            kategorie = kategorien[kategorie_auswahl]
+        if kategorie_auswahl in kategorien:                                              #prüft ob der Key im Dictionary vorhanden ist
+            kategorie = kategorien[kategorie_auswahl]                                    #weist der variable kategorie den neuen wert zu
             break
         elif kategorie_auswahl == 'x':
             return
