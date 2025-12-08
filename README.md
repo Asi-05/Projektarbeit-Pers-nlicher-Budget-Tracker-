@@ -143,7 +143,7 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 		2          01.05.2025   3000.0       Einnahme
   		3          01.06.2025   3000.0       Einnahme     
 		```
-		- Diese Anzeige dient als Übersicht für den User, um seine Eingaben in einer Übersicht zu sehen. So kann der User gezielt Daten aussuchen und bearbeiten oder löschen mit der editieren.py Funktion.
+		- Diese Anzeige dient als Übersicht für den User, um seine Eingaben in einer Übersicht zu sehen. So kann der User gezielt Daten aussuchen und bearbeiten oder löschen mit der `editieren.py` Funktion.
 ## ⚙️ Implementation
 
 ### Technology
