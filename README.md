@@ -58,10 +58,10 @@ Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslo
 	```python
 	print("=== Willkommen zu deinem Budgetplaner ===")
 
-def main():
+	def main():
     """Hauptmenü"""
 
-#Funktion für Menü
+	#Funktion für Menü
     def start_menu():                                               #definiert die Funktoin Start mit Namen start_menu
         print("\nWas willst du heute machen?")
         print("1) Einnahmen hinzufügen")
