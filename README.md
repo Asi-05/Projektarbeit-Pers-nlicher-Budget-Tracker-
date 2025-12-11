@@ -4,16 +4,14 @@ Dieses Projekt hat folgende Ziele:
 Einen personellen Budgetplaner programmieren
 -
 
-## 📝 Analysis
+## 📝 Analyse
 
 **Problem**
-> 🚧 Describe the real-world problem your application solves. (Not HOW, but WHAT)
 
 Viele Menschen möchten ihre persönlichen Finanzen besser verwalten, haben aber keine einfache Möglichkeit ihre Einnahmen und Ausgaben zu erfassen und übersichtlich darzustellen. Eine manuelle Nachführung mit Tabellen ist mühsam und fehleranfällig.
 
 
-**Scenario**
-> 🚧 Describe when and how a user will use your application
+**Szenario**
 
 Beispiel: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
 
@@ -61,42 +59,44 @@ Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslo
 	print("=== Willkommen zu deinem Budgetplaner ===")
 
 	def main():
-    
+    """Hauptmenü"""
 
 	#Funktion für Menü
-    	def start_menu(): #definiert die Funktoin Start mit Namen start_menu
-        	print("\nWas willst du heute machen?")
-        	print("1) Einnahmen hinzufügen")
-        	print("2) Ausgaben hinzufügen")
-        	print("3) Übersicht anzeigen")
-        	print("4) Edit")
-        	print("5) Programm beenden")
+    def start_menu():                                               #definiert die Funktoin Start mit Namen start_menu
+        print("\nWas willst du heute machen?")
+        print("1) Einnahmen hinzufügen")
+        print("2) Ausgaben hinzufügen")
+        print("3) Übersicht anzeigen")
+        print("4) Editieren")
+        print("5) Programm beenden")
     
-        	choice = input("Bitte wähle eine Option (1-5): ")
-        	return choice #choice wird gemäss eingabe vom User wiedergegeben
+        choice = input("Bitte wähle eine Option (1-5): ")
+        # choice ...
+        return choice                                               #choice wird gemäss eingabe vom User wiedergegeben
 
 
 
-	#Hauptprogramm mit Schleife
-    	while True: 
-        	auswahl = start_menu() #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
+    # Hauptprogramm mit Schleife
+    while True: 
+        auswahl = start_menu()                                      #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
 
-        	if auswahl == "1":
+        if auswahl == "1":
             einnahmen_hinzufuegen()
-        	elif auswahl == "2":
+        elif auswahl == "2":
             ausgaben_hinzufuegen()
-        	elif auswahl == "3":
+        elif auswahl == "3":
             uebersicht_anzeigen()
-       	 	elif auswahl == "4":
+        elif auswahl == "4":
             editieren()
- 			elif auswahl == "5":
+        elif auswahl == "5":
             print("Vielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
             break
 
         else:
             print(" X Ungültige Eingabe, bitte nochmals versuchen.")
+
 	```
-	Dies lässt nur gültige Zahlen durch, um die gewünschte Funktion auszulösen.
+Dies lässt nur gültige Zahlen durch, um die gewünschte Funktion auszulösen.
 
 - **CSV Datei validieren:** Beim ausführen jeder Funktion wird geprüft, ob schon eine CSV Datei existiert. Falls Ja wird die Fehlermeldung: FileExistsError übersprungen. Falls keine CSV Datei existiert wird eine neue erstellt mit dem Namen: 'budged.csv'
 ```python
@@ -143,7 +143,7 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 		2          01.05.2025   3000.0       Einnahme
   		3          01.06.2025   3000.0       Einnahme     
 		```
-		- Diese Anzeige dient als Übersicht für den User, um seine Eingaben in einer Übersicht zu sehen. So kann der User gezielt Daten aussuchen und bearbeiten oder löschen mit der XXX Funktion.
+		- Diese Anzeige dient als Übersicht für den User, um seine Eingaben in einer Übersicht zu sehen. So kann der User gezielt Daten aussuchen und bearbeiten oder löschen mit der `editieren.py` Funktion.
 ## ⚙️ Implementation
 
 ### Technology
@@ -178,7 +178,6 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 ```
 
 ### Wie funktioniert das Programm
-> 🚧 Adjust if needed.
 1. Repository in **GitHub Codespaces** öffnen
 2. **Terminal** öffnen
 3. Eingeben:
@@ -194,11 +193,11 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 
 ## 👥 Team & Beiträge
 
-| Name       			| Beitrag									   																				|
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
-|Asithan Supendran  	|Erstellung vom Hauptmenü, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces 
-|Filmon Samy			|               
-|Janath Balasubramaniam |   
+| Name       			| Beitrag									   																	   |
+|-----------------------|------------------------------------------------------------------------------------------------------------------|
+|Asithan Supendran  	|Hauptmenüfunktion, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces |
+|Filmon Samy			|Editierfunktion, Ausgabenfunktion, Löschen Funktion 															   |              
+|Janath Balasubramaniam |Kategorie Auswahl Funktion, Übersichtsfunktion, Datumeingabe Funktion 											   |  
 
 
 
