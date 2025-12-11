@@ -39,7 +39,7 @@ def main():
         elif auswahl == "4":
             editieren()
         elif auswahl == "5":
-            print("Vielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
+            print("\nVielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
             break
 
         else:

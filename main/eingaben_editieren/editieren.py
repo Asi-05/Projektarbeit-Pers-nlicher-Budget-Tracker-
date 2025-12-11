@@ -149,6 +149,7 @@ def editieren():                                                                
                  
                     while True:                                                                                         #ruft kategorie auswahl basierend auf dem zieltyp auf
                         if ziel_typ =='Einnahme':
+                            
                             neue_kategorie = kategorieauswahl_einnahme()
                             break                                                                                       #beendet bei gültiger eingabe
 
