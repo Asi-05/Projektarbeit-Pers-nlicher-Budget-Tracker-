@@ -73,13 +73,7 @@ def uebersicht_anzeigen():
                     row_datum = datetime.strptime(row['datum'], '%d.%m.%Y')
                     if datum_von <= row_datum <= datum_bis:
                         betrag = float(row['betrag'])
-                        if row['kategorie'] == 'Lohn':
 
-                            #Gesamtbilanz
-                            if row['typ'] == 'Einnahme':
-                                gesamt_einnahmen += betrag
-                            else:
-                                gesamt_ausgaben += betrag
                         #Gesamtbilanz
                         if row['typ'] == 'Einnahme':
                             gesamt_einnahmen += betrag
@@ -111,19 +105,19 @@ def uebersicht_anzeigen():
                             bilanz_sonstiges += betrag if row['typ'] == 'Einnahme' else -betrag
 
             print(f'\nBilanz vom {datum_von.strftime("%d.%m.%Y")} bis {datum_bis.strftime("%d.%m.%Y")}:')
-            print(f'\nLohn: \t\t\t{bilanz_lohn:.2f} CHF')
-            print(f'\nTransport: \t\t{bilanz_transport:.2f} CHF')
-            print(f'\nEinkäufe: \t\t{bilanz_einkaeufe:.2f} CHF')
+            print(f'\nLohn: \t\t\t\t{bilanz_lohn:.2f} CHF')
+            print(f'\nTransport: \t\t\t{bilanz_transport:.2f} CHF')
+            print(f'\nEinkäufe: \t\t\t{bilanz_einkaeufe:.2f} CHF')
             print(f'\nVersicherungen: \t{bilanz_versicherungen:.2f} CHF')
-            print(f'\nMiete: \t\t\t{bilanz_miete:.2f} CHF')
-            print(f'\nSteuern: \t\t{bilanz_steuern:.2f} CHF')
-            print(f'\nFreizeiz: \t\t{bilanz_freizeit:.2f} CHF')
-            print(f'\nSparen: \t\t{bilanz_sparen:.2f} CHF')
+            print(f'\nMiete: \t\t\t\t{bilanz_miete:.2f} CHF')
+            print(f'\nSteuern: \t\t\t{bilanz_steuern:.2f} CHF')
+            print(f'\nFreizeiz: \t\t\t{bilanz_freizeit:.2f} CHF')
+            print(f'\nSparen: \t\t\t{bilanz_sparen:.2f} CHF')
             print(f'\nWell being: \t\t{bilanz_wellbeing:.2f} CHF')
-            print(f'\nSonstiges: \t\t{bilanz_sonstiges:.2f} CHF')
+            print(f'\nSonstiges: \t\t\t{bilanz_sonstiges:.2f} CHF')
 
-            print(f'\nEinnahmen: \t\t{gesamt_einnahmen:.2f} CHF')
-            print(f'Ausgaben: \t\t{gesamt_ausgaben:.2f} CHF')
+            print(f'\nEinnahmen: \t\t\t{gesamt_einnahmen:.2f} CHF')
+            print(f'Ausgaben: \t\t\t{gesamt_ausgaben:.2f} CHF')
 
             print(f'\nGesamtbilanz: \t\t{gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
             break

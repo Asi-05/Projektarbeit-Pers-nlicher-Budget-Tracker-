@@ -129,22 +129,24 @@ def editieren():                                                                
                 bestaetigung = input('Diesen Eintrag bearbeiten? (1/2):').strip()                                       #fragt user ob er wirklich bearbeiten will
                 if bestaetigung== '1':                                                                                  #falls user 1 für ja sagt
                     while True:                                                                                         #verlangt gültige eingabe
-                        neuer_typ_wahl=input('Neuer Typ (1=Einnahme | 2=Ausgabe):')
+                        neuer_typ_wahl=input('Neuer Typ (1=Einnahme | 2=Ausgabe):').strip()
                         if neuer_typ_wahl=='1':
                             neuer_typ='Einnahme'
                             break                                                                                       #sobald ein gültiger typ gewählt wurde gehts weiter
                         elif neuer_typ_wahl=='2':
                             neuer_typ='Ausgabe'
-                            break                                                                                       #sobald ein gültiger typ gewählt wurde gehts weiter
-                        elif neuer_typ_wahl=='':
-                            neuer_typ=''
-                            break                                                                                       #falls user keine eingabe macht wird das alte übernommen
+                            break                                                                                       #sobald ein gültiger typ gewählt wurde gehts weiter                                                                                     #falls user keine eingabe macht wird das alte übernommen
                         else:
                             print('Ungültige Eingabe! Bitte 1 oder 2 wählen.')
-                    neuer_betrag= input('Neuer Betrag: ').strip()                                                       #user gibt neuen betrag ein
+                    while True:
+                        try:
+                            neuer_betrag= float(input('Neuer Betrag: ').strip())
+                            break
+                        except ValueError:
+                            print('Bitte gültigen Betrag eingeben!')                                                       #user gibt neuen betrag ein
                     neues_datum= datum_eingabe()                                                                        #neues datum 
-                    ziel_typ= neuer_typ if neuer_typ else row['typ']                                                    #bestimmt den typ, der für die kategorie wahl genutzt wird
-                    neue_kategorie= row['kategorie']                                                                    #setzt alte kategorie als standard
+                    ziel_typ= neuer_typ                                                   #bestimmt den typ, der für die kategorie wahl genutzt wird
+                                                                                       #setzt alte kategorie als standard
                     
                  
                     while True:                                                                                         #ruft kategorie auswahl basierend auf dem zieltyp auf
@@ -160,12 +162,7 @@ def editieren():                                                                
                         else:
                             print('Ungültiger Typ angegeben. Bitte zuerst Einnahme oder Ausgabe eingeben')
                             break
-                    if neuer_typ.strip()=='':
-                        neuer_typ=row['typ']
-                    if neues_datum.strip()=='':
-                        neues_datum=row['datum']
-                    if neuer_betrag.strip()=='':
-                        neuer_betrag= row['betrag']
+                  
                                                                                                                         #falls nichts vom user eingegeben wird,w ird der alte wert übernommen  
 
                     neue_daten.append({                                                                                 #fügt neuen/bearbeiteten eintrag zur liste hinzu
