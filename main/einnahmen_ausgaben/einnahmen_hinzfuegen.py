@@ -32,7 +32,7 @@ def einnahmen_hinzufuegen():                                                    
             
             break                                                                   #beendet die schleife, wenn erfolgreich
         except ValueError:                                                          #wenn keine gültige zahl eingegeben wurde
-            print("Bitte gültigen Betrag eingeben!")                                #fehlermeldug zeigen
+            print("Bitte gültigen Betrag eingeben!")                                #fehlermeldung zeigen
 
     datum = datum_eingabe()                                                         #Datum eingabe Funktion wird aufgerufen
 
@@ -43,4 +43,4 @@ def einnahmen_hinzufuegen():                                                    
         writer = csv.writer(file)                                                   #erstellt ein CSV-Schreibobjekt
         writer.writerow([datum, betrag, 'Einnahme', kategorie])                     #schreibt die neue einnahme als neue zeile in die Datei
 
-    print(f'\nEinnahme von {betrag:.2f} CHF {kategorie} wurde gespeichert.\n')     #bestätigungsausgabe für den user
+    print(f'\nEinnahme von {betrag:.2f} CHF {kategorie} wurde gespeichert.\n')      #bestätigungsausgabe für den user

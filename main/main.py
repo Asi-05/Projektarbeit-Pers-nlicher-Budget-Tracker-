@@ -6,14 +6,14 @@ from einnahmen_ausgaben.einnahmen_hinzfuegen import *
 from uebersicht_einnahmen_ausgaben.uebersicht_anzeigen import *
 
 
-print("=== Willkommen zu deinem Budgetplaner ===")
+print("\n\n=== Willkommen zu deinem Budgetplaner ===")
 
 def main():
     """Hauptmenü"""
 
 #Funktion für Menü
     def start_menu():                                               #definiert die Funktoin Start mit Namen start_menu
-        print("\nWas willst du heute machen?")
+        print("\n\nWas willst du heute machen?")
         print("1) Einnahmen hinzufügen")
         print("2) Ausgaben hinzufügen")
         print("3) Übersicht anzeigen")
@@ -21,8 +21,8 @@ def main():
         print("5) Programm beenden")
     
         choice = input("Bitte wähle eine Option (1-5): ")
-        # choice ...
-        return choice                                               #choice wird gemäss eingabe vom User wiedergegeben
+        #choice wird ans start_menu() zurückgegeben
+        return choice                                               
 
 
 
@@ -39,9 +39,8 @@ def main():
         elif auswahl == "4":
             editieren()
         elif auswahl == "5":
-            print("Vielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
-            break
-
+            print("\nVielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
+            break                                                    #bei auswahl 5 bricht die schleife und das Programm wird beendet
         else:
             print(" X Ungültige Eingabe, bitte nochmals versuchen.")
 

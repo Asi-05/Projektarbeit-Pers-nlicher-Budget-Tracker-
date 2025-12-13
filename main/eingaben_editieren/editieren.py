@@ -135,7 +135,8 @@ def editieren():                                                                
                             break                                                                                       #sobald ein gültiger typ gewählt wurde gehts weiter
                         elif neuer_typ_wahl=='2':
                             neuer_typ='Ausgabe'
-                            break                                                                                       #sobald ein gültiger typ gewählt wurde gehts weiter                                                                                     #falls user keine eingabe macht wird das alte übernommen
+                            break                                                                                       #sobald ein gültiger typ gewählt wurde gehts weiter          
+                                                                                                                        
                         else:
                             print('Ungültige Eingabe! Bitte 1 oder 2 wählen.')
                     while True:
@@ -143,14 +144,14 @@ def editieren():                                                                
                             neuer_betrag= float(input('Neuer Betrag: ').strip())
                             break
                         except ValueError:
-                            print('Bitte gültigen Betrag eingeben!')                                                       #user gibt neuen betrag ein
+                            print('Bitte gültigen Betrag eingeben!')                                                    #user gibt neuen betrag ein
                     neues_datum= datum_eingabe()                                                                        #neues datum 
-                    ziel_typ= neuer_typ                                                   #bestimmt den typ, der für die kategorie wahl genutzt wird
-                                                                                       #setzt alte kategorie als standard
-                    
+                    ziel_typ= neuer_typ                                                                                 #bestimmt den typ, der für die kategorie wahl genutzt wird
+                                                                                      
                  
                     while True:                                                                                         #ruft kategorie auswahl basierend auf dem zieltyp auf
                         if ziel_typ =='Einnahme':
+                            
                             neue_kategorie = kategorieauswahl_einnahme()
                             break                                                                                       #beendet bei gültiger eingabe
 
@@ -162,7 +163,7 @@ def editieren():                                                                
                             print('Ungültiger Typ angegeben. Bitte zuerst Einnahme oder Ausgabe eingeben')
                             break
                   
-                                                                                                                        #falls nichts vom user eingegeben wird,w ird der alte wert übernommen  
+                                                                                                                        
 
                     neue_daten.append({                                                                                 #fügt neuen/bearbeiteten eintrag zur liste hinzu
                         'datum': neues_datum,
