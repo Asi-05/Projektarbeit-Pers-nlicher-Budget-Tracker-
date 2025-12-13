@@ -4,16 +4,14 @@ Dieses Projekt hat folgende Ziele:
 Einen personellen Budgetplaner programmieren
 -
 
-## 📝 Analysis
+## 📝 Analyse
 
 **Problem**
-> 🚧 Describe the real-world problem your application solves. (Not HOW, but WHAT)
 
 Viele Menschen möchten ihre persönlichen Finanzen besser verwalten, haben aber keine einfache Möglichkeit ihre Einnahmen und Ausgaben zu erfassen und übersichtlich darzustellen. Eine manuelle Nachführung mit Tabellen ist mühsam und fehleranfällig.
 
 
-**Scenario**
-> 🚧 Describe when and how a user will use your application
+**Szenario**
 
 Beispiel: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingeben, diese in Kategorien sortieren und eine Übersicht über seine Finanzen erhalten inklusive Summen und Bilanzen über bestimmte Zeiträume.
 
@@ -32,7 +30,7 @@ Beispiel: Der Benutzer möchte regelmässig seine Einnahmen und Ausgaben eingebe
 - Einträge bearbeiten/löschen
 - Programm beenden
 
-## ✅ Project Requirements
+## ✅ Projekt Anforderungen
 
 1. Interaktive Anwendung (Konsoleneingabe)
 2. Datenvalidierung (Eingabeprüfung)
@@ -56,10 +54,31 @@ Die Anwendung interagiert über die Konsole mit dem Benutzer. Benutzer können:
 
 Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslose Benutzererfahrung zu gewährleisten. Dies ist im main.py und datei_pruefen.py wie folgt implementiert: 
 
-- **Funktions selektion:** Wenn der Benutzer eine Nummer eingibt prüft das Programm, ob die Eingabe innerhalb des gültigen Bereiches ist:
+- **Funktions selektion:** Wenn der Benutzer eine Nummer eingibt prüft das Programm, ob sich die Eingabe innerhalb des gültigen Bereiches befindet :
 	```python
-	while True: 
-        auswahl = start_menu() #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
+	print("=== Willkommen zu deinem Budgetplaner ===")
+
+	def main():
+    """Hauptmenü"""
+
+	#Funktion für Menü
+    def start_menu():                                               #definiert die Funktoin Start mit Namen start_menu
+        print("\nWas willst du heute machen?")
+        print("1) Einnahmen hinzufügen")
+        print("2) Ausgaben hinzufügen")
+        print("3) Übersicht anzeigen")
+        print("4) Editieren")
+        print("5) Programm beenden")
+    
+        choice = input("Bitte wähle eine Option (1-5): ")
+        # choice ...
+        return choice                                               #choice wird gemäss eingabe vom User wiedergegeben
+
+
+
+    # Hauptprogramm mit Schleife
+    while True: 
+        auswahl = start_menu()                                      #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
 
         if auswahl == "1":
             einnahmen_hinzufuegen()
@@ -75,20 +94,21 @@ Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslo
 
         else:
             print(" X Ungültige Eingabe, bitte nochmals versuchen.")
+
 	```
-	Dies lässt nur gültige Zahlen durch, um die gewünschte Funktion auszulösen.
+Dies lässt nur gültige Zahlen durch, um die gewünschte Funktion auszulösen.
 
 - **CSV Datei validieren:** Beim ausführen jeder Funktion wird geprüft, ob schon eine CSV Datei existiert. Falls Ja wird die Fehlermeldung: FileExistsError übersprungen. Falls keine CSV Datei existiert wird eine neue erstellt mit dem Namen: 'budged.csv'
 ```python
  DATEI = 'budget.csv' 
 
-def datei_pruefen():    #prüfen, ob die CSV Datei exestiert, ansonsten wird diese erstellt
+def datei_pruefen():    												#prüfen, ob die CSV Datei exestiert, ansonsten wird diese erstellt
     try:
-        with open (DATEI, 'x', newline = '') as file:       #öffnet die Datei im x Modus (erstellt neue Datei, wenn sie nicht existiert)
-            writer = csv.writer(file)                       #erstellt ein CSV Schreibobjekt
+        with open (DATEI, 'x', newline = '') as file:       			#öffnet die Datei im x Modus (erstellt neue Datei, wenn sie nicht existiert)
+            writer = csv.writer(file)                      		 		#erstellt ein CSV Schreibobjekt
             writer.writerow(['datum', 'betrag', 'typ', 'kategorie'])    #schreibt die spalten überschriften
-    except FileExistsError:            #falls die Datei schon existiert, tritt dieser Fehler auf
-        pass                                #Dann wird einfach nichts gemacht (Datei bleibt bestehen)
+    except FileExistsError:            									#falls die Datei schon existiert, tritt dieser Fehler auf
+        pass                                							#Dann wird einfach nichts gemacht (Datei bleibt bestehen)
 	
 ```
 
@@ -101,74 +121,83 @@ Diese Prüfungen verhindern Abstürze und leiten den Benutzer dazu an, korrekte 
 
 ### 3. Datenverarbeitung (Lesen/Schreiben)
 
-The application reads and writes data using files:
+Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 
-- **Input file:** `menu.txt` — Contains the pizza menu, one item per line in the format `PizzaName;Size;Price`.
-	- Example:
+- **Input file:** `budget.csv` — Enthält die Daten, welche vorhin vom User eingegeben wurden in Zeilen und Spalten `'datum', 'betrag','typ', 'kategorie'`.
+	- Beispiel: 
 		```
-		Margherita;Medium;12.50
-		Salami;Large;15.00
-		Funghi;Small;9.00
+		datum,betrag,typ,kategorie
+		01.04.2025,3000.0,Einnahme,Lohn
+		01.05.2025,3000.0,Einnahme,Lohn
+		25.05.2025,250.0,Einnahme,Sonstiges
+		01.06.2025,3000.0,Einnahme,Lohn
 		```
-	- The application reads this file at startup to display available pizzas.
+	- Beim aufruf der Funktion 'uebersicht_anzeigen.py' wird auf die budget.csv datei zugegriffen, und der Inhalt wird eingelesen, um die entsprechende Übersicht anzuzeigen.
 
-- **Output file:** `invoice_001.txt` (and similar) — Generated when an order is completed. Contains a summary of the order, including items, quantities, prices, discounts, and totals.
-	- Example:
+- **Output Funktion:** `uebersicht_anzeigen.py` - Greift auf die CSV Datei zu und zeigt die gewünschte Übersicht im Terminal an. Beispielsweise will der User eine Kategorieübersicht von der Kategorie Lohn.
+	- Beispiel:
 		```
-		Invoice #001
-		----------------------
-		1x Margherita (Medium)   12.50
-
-
-		2x Salami (Large)        30.00
-		----------------------
-		Total:                  42.50
-		Discount:                2.50
-		Amount Due:             40.00
+		Counter    Datum        Betrag       Typ       
+		----------------------------------------------------------------------
+		1          01.04.2025   3000.0       Einnahme   
+		2          01.05.2025   3000.0       Einnahme
+  		3          01.06.2025   3000.0       Einnahme     
 		```
-		- The output file serves as a record for both the user and the pizzeria, ensuring accuracy and transparency.
-
+		- Diese Anzeige dient als Übersicht für den User, um seine Eingaben in einer Übersicht zu sehen. So kann der User gezielt Daten aussuchen und bearbeiten oder löschen mit der `editieren.py` Funktion.
 ## ⚙️ Implementation
 
 ### Technology
-- Python 3.x
-- Environment: GitHub Codespaces
-- No external libraries
+- Python 3.13.7
+- Umgebung: GitHub Codespaces / Visual Studio Code
+- Keine externen Bibliotheken
 
-### 📂 Repository Structure
+### 📂 Repository Struktur
 ```text
-PizzaRP/
-├── main.py             # main program logic (console application)
-├── menu.txt            # pizza menu (input data file)
-├── invoice_001.txt     # example of a generated invoice (output file)
-├── docs/               # optional screenshots or project documentation
-└── README.md           # project description and milestones
+.
+├─ main/
+│  ├─ datei_kontrollieren/				# Logik zur Prüfung der Datei/CSV
+│  │  └─ datei_pruefen.py
+│  ├─ datum_eingabe/					# Eingabe und Validierung von Datumswerten
+│  │  └─ datum_eingabe.py
+│  ├─ eingaben_editieren/				# Bearbeiten bestehender Einträge
+│  │  └─ editieren.py
+│  ├─ einnahmen_ausgaben/				# Hinzufügen von Einnahmen/Ausgaben
+│  │  ├─ ausgaben_hinzufuegen.py
+│  │  └─ einnahmen_hinzufuegen.py
+│  ├─ kategorie_auswahl/				# Auswahl der Kategorie
+│  │  └─ kategorieauswahl.py
+│  ├─ uebersicht_einnahmen_ausgaben/	# Anzeigen der Übersicht
+│  │  └─ uebersicht_anzeigen.py
+│  └─ main.py							# Hauptstarter des Programms
+│
+├─ budget.csv
+├─ README.md
+├─ .gitignore
+└─ .DS_Store
+
 ```
 
-### How to Run
-> 🚧 Adjust if needed.
-1. Open the repository in **GitHub Codespaces**
-2. Open the **Terminal**
-3. Run:
+### Wie funktioniert das Programm
+1. Repository in **GitHub Codespaces** öffnen
+2. **Terminal** öffnen
+3. Eingeben:
 	```bash
 	python3 main.py
 	```
 
 ### Libraries Used
 
-- `os`: Used for file and path operations, such as checking if the menu file exists and creating new files.
-- `glob`: Used to find all invoice files matching a pattern (e.g., `invoice_*.txt`) to determine the next invoice number.
-
-These libraries are part of the Python standard library, so no external installation is required. They were chosen for their simplicity and effectiveness in handling file management tasks in a console application.
+- `datetime`: Wird verwendet, um Datumsangaben im Programm einzugeben und zu verarbeiten. Zum Beispiel, wenn Einnahmen oder Ausgaben erfasst werden. Ausserdem hilft `datetime` dabei, Übersichten nach Datum anzuzeigen sowie Einträge anhand ihres Datums zu finden und oder zu bearbeiten.
+- `csv`: Wird genutzt, um CSV-Dateien zu lesen, schreiben und zu verarbeiten. Wie zum beispiel: `budget.csv`. 
 
 
 ## 👥 Team & Beiträge
 
-| Name       			| Beitrag									   |
-|-----------------------|----------------------------------------------|
-|Asithan Supendran  	|Erstellung vom Hauptmenü, Einnahmefunktion, Aufteilung der funktionen,  
-|Filmon Samy			|               
-|Janath Balasubramaniam |   
+| Name       			| Beitrag									   																	   |
+|-----------------------|------------------------------------------------------------------------------------------------------------------|
+|Asithan Supendran  	|Hauptmenüfunktion, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces |
+|Filmon Samy			|Editierfunktion, Ausgabenfunktion, Löschen Funktion 															   |              
+|Janath Balasubramaniam |Kategorie Auswahl Funktion, Übersichtsfunktion, Datumeingabe Funktion 											   |  
 
 
 

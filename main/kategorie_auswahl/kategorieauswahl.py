@@ -1,17 +1,8 @@
 def kategorieauswahl_ausgabe():
-    print('\nWähle eine Kategorie:')
+    '''Funktion für Kategorieauswahl (Ausgabe)'''
 
-    print('1) Transport')
-    print('2) Einkäufe')
-    print('3) Versicherungen')
-    print('4) Miete')
-    print('5) Steuern')
-    print('6) Freizeit')
-    print('7) Sparen')
-    print('8) Well being')
-    print('9) Sonstiges')
-    print('x) zurück')
 
+    #Ausgabe-Kategorien in einem Dicitionary gelistet
     kategorien = {
         '1': 'Transport',
         '2': 'Einkäufe',
@@ -26,14 +17,14 @@ def kategorieauswahl_ausgabe():
     }
 
     print('\nWähle eine Kategorie:')
-    for key, name in kategorien.items():
+    for key, name in kategorien.items():                                                #printet die Variable Kategorie Key und den Wert aus
         print(f'{key}) {name}')
 
     while True:
-        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–9: ').strip()
+        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–9: ').strip()     #verlangt input vom User und speichert diese als variable
 
-        if kategorie_auswahl in kategorien:
-            kategorie = kategorien[kategorie_auswahl]
+        if kategorie_auswahl in kategorien:                                             #prüft ob der Key im Dictionary vorhanden ist
+            kategorie = kategorien[kategorie_auswahl]                                   #weist der variable kategorie den neuen wert zu
             break
         elif kategorie_auswahl == 'x':
             return
@@ -45,6 +36,7 @@ def kategorieauswahl_ausgabe():
 
 
 def kategorieauswahl_einnahme():
+    '''Funktion für Kategorieauswahl (Einnahme)'''
     while True:
 
         print('\nWähle eine Kategorie:')
@@ -56,7 +48,7 @@ def kategorieauswahl_einnahme():
         kategorie_auswahl = input('\nBitte wähle eine Kategorie (1/2): ').strip()
 
 
-
+        #Überprüfung der Eingabe
         if kategorie_auswahl == '1':
             return 'Lohn'
 
@@ -70,20 +62,8 @@ def kategorieauswahl_einnahme():
             print('Ungültige Eingabe, bitte 1 oder 2 wählen.')
 
 def kategorieauswahl_gesamt():
-    print('\nWähle eine Kategorie:')
-
-    print('\n1) Lohn')
-    print('2) Transport')
-    print('3) Einkäufe')
-    print('4) Versicherungen')
-    print('5) Miete')
-    print('6) Steuern')
-    print('7) Freizeit')
-    print('8) Sparen')
-    print('9) Well being')
-    print('10) Sonstiges')
-    print('x) zurück')
-
+    '''Funktion für Kategorieauswahl (Gesamt)'''
+    # Alle Kategorien in einem Dicitionary gelistet
     kategorien = {
         '1': 'Lohn',
         '2': 'Transport',
@@ -100,18 +80,18 @@ def kategorieauswahl_gesamt():
 
     print('\nWähle eine Kategorie:')
     for key, name in kategorien.items():
-        print(f'{key}) {name}')
+        print(f'{key}) {name}')                                                         #printet die Variable Kategorie Key und den Wert aus
 
     while True:
-        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–9: ').strip()
+        kategorie_auswahl = input('\nBitte wähle eine Kategorie von 1–10: ').strip()
 
-        if kategorie_auswahl in kategorien:
-            kategorie = kategorien[kategorie_auswahl]
+        if kategorie_auswahl in kategorien:                                              #prüft ob der Key im Dictionary vorhanden ist
+            kategorie = kategorien[kategorie_auswahl]                                    #weist der variable kategorie den neuen wert zu
             break
         elif kategorie_auswahl == 'x':
             return
         else:
-            print('Ungültige Eingabe. Bitte nur Zahlen von 1 bis 9 eingeben.')
+            print('Ungültige Eingabe. Bitte nur Zahlen von 1 bis 10 eingeben.')
 
     print(f'\nKategorie gewählt: {kategorie}')
     return kategorie
