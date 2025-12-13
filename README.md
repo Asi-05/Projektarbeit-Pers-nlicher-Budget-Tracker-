@@ -183,10 +183,8 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 3. Eingeben:
 	```bash
  	cd main
- 
- und dann 
- 
 	python3 main.py
+ 	```
 	
 
 ### Libraries Used
