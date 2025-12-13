@@ -187,7 +187,7 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
  und dann 
  
 	python3 main.py
-	```
+	
 
 ### Libraries Used
 
