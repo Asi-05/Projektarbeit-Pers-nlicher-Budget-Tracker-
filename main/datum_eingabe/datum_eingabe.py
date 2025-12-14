@@ -17,10 +17,10 @@ def datum_eingabe():
 
 def datum_eingabe_uerbesichtanzeigen(prompt):
     while True:
-        eingabe = input(prompt).strip()
+        eingabe = input(prompt).strip()                                  #entfernt die leerzeichen der eingabe
         try:
-            datum_obj = datetime.strptime(eingabe, '%d.%m.%Y')
-            return datum_obj                                            #Wichtig: direkt ein datetime-Objekt zurückgeben!
+            datum_obj = datetime.strptime(eingabe, '%d.%m.%Y')    #prüfen ob eingabe Format korrekt ist
+            return datum_obj                                             #Wichtig: direkt ein datetime-Objekt zurückgeben!
         except ValueError:
             print('Ungültiges Datum! Bitte im Format TT.MM.YYYY eingeben.')
 

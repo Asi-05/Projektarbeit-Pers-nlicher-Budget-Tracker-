@@ -67,14 +67,17 @@ def uebersicht_anzeigen():
             bilanz_wellbeing = 0
             bilanz_sonstiges = 0
 
-            with open(DATEI, 'r', newline='') as file:
-                reader = csv.DictReader(file)
+            with open(DATEI, 'r', newline='') as file:                                              # öffnet die Datei im lesemodus als dile
+                reader = csv.DictReader(file)                                                       # liest die csv.datei als dictionary
+
+                # iteriert alle zeilen durch und wandelt das datum von einem string zu einem datetime objekt
                 for row in reader:
                     row_datum = datetime.strptime(row['datum'], '%d.%m.%Y')
+                    # überprüft ob das datum im gewünschten bereich drin ist
                     if datum_von <= row_datum <= datum_bis:
-                        betrag = float(row['betrag'])
+                        betrag = float(row['betrag'])                                               # wandelt den betrag von einem string zu einem float zum rechnen
 
-                        #Gesamtbilanz
+                        #Gesamtbilanz (addiert zur einnahme oder ausgabe)
                         if row['typ'] == 'Einnahme':
                             gesamt_einnahmen += betrag
                         else:
@@ -82,7 +85,7 @@ def uebersicht_anzeigen():
 
                             #Kategorie-spezifische Bilanz
 
-                        #Kategorie-spezifische Bilanz
+                        #Kategorie-spezifische Bilanz (addiert zur jeweiligen kategorie)
                         if row['kategorie'] == 'Lohn':
                             bilanz_lohn += betrag if row['typ'] == 'Einnahme' else -betrag
                         elif row['kategorie'] == 'Transport':
