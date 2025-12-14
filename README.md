@@ -1,6 +1,6 @@
 # 💰 Personeller Budgetplaner
 
-**🎯 Projektziel**
+##🎯 Projektziel**
 Ziel dieses Projektes ist die Entwicklung eines personellen Budgetplaners, mit dem Benutzer ihre Einnahmen und Ausgaben effizient verwalten können. Die Anwendung ermöglicht eine strukturierte Erfassung, Kategorisierung sowie die Auswertung finanzieller Daten über definierte Zeiträume.
 
 -
