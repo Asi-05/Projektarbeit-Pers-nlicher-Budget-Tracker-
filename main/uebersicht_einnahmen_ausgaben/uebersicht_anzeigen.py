@@ -52,7 +52,7 @@ def uebersicht_anzeigen():
             datum_bis = datum_eingabe_uerbesichtanzeigen('\nDatum bis (TT.MM.JJJJ): ')
             while datum_bis < datum_von:                                                            #Überprüfung ob datum_bis kleiner ist als datum_von
                 print(' \nDas Enddatum darf nicht vor dem Startdatum liegen.')
-                datum_bis = datum_eingabe('\nDatum bis (TT.MM.JJJJ): ')
+                datum_bis = datum_eingabe_uerbesichtanzeigen('\nDatum bis (TT.MM.JJJJ): ')
 
             #CSV-Datei auswerten
             gesamt_einnahmen = 0
