@@ -196,7 +196,7 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 
 ## 👥 Team & Beiträge
 
-					| Name       			| Beitrag									   																	|	
+| Name       			| Beitrag									   																						|
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
 |Asithan Supendran  	|Hauptmenüfunktion, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces, Readme Datei 	|	
 |Filmon Samy			|Editierfunktion, Ausgabenfunktion, Löschen Funktion 															   					|              
