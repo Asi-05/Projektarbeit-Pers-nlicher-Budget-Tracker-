@@ -72,7 +72,7 @@ Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslo
         print("5) Programm beenden")
     
         choice = input("Bitte wähle eine Option (1-5): ")
-        # choice ...
+        ##choice wird ans start_menu() zurückgegeben
         return choice                                               #choice wird gemäss eingabe vom User wiedergegeben
 
 
