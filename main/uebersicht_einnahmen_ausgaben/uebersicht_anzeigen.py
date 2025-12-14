@@ -7,6 +7,7 @@ import csv
 
 
 def uebersicht_anzeigen():
+    '''Übersicht Anzeige Funktion'''
     datei_pruefen()                                                                                 #funktion dateiprüfen wird abgeruft
 
     counter = 0
@@ -94,7 +95,7 @@ def uebersicht_anzeigen():
                             bilanz_einkaeufe += betrag if row['typ'] == 'Einnahme' else -betrag
                         elif row['kategorie'] == 'Versicherungen':
                             bilanz_versicherungen += betrag if row['typ'] == 'Einnahme' else -betrag
-                        elif row['kategorie'] == 'Miete':
+                        elif row['kategorie'] == 'Miete':   
                             bilanz_miete += betrag if row['typ'] == 'Einnahme' else -betrag
                         elif row['kategorie'] == 'Steuern':
                             bilanz_steuern += betrag if row['typ'] == 'Einnahme' else -betrag
