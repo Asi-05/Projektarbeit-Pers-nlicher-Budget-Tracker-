@@ -42,7 +42,7 @@ def main():
             print("\nVielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
             break                                                    #bei auswahl 5 bricht die schleife und das Programm wird beendet
         else:
-            print(" X Ungültige Eingabe, bitte nochmals versuchen.")
+            print("X Ungültige Eingabe, bitte nochmals versuchen.")
 
 
 if __name__ == "__main__":
