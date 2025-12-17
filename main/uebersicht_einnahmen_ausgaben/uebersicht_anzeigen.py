@@ -7,6 +7,7 @@ import csv
 
 
 def uebersicht_anzeigen():
+    '''Übersicht Anzeige Funktion'''
     datei_pruefen()                                                                                 #funktion dateiprüfen wird abgeruft
 
     counter = 0
@@ -94,7 +95,7 @@ def uebersicht_anzeigen():
                             bilanz_einkaeufe += betrag if row['typ'] == 'Einnahme' else -betrag
                         elif row['kategorie'] == 'Versicherungen':
                             bilanz_versicherungen += betrag if row['typ'] == 'Einnahme' else -betrag
-                        elif row['kategorie'] == 'Miete':
+                        elif row['kategorie'] == 'Miete':   
                             bilanz_miete += betrag if row['typ'] == 'Einnahme' else -betrag
                         elif row['kategorie'] == 'Steuern':
                             bilanz_steuern += betrag if row['typ'] == 'Einnahme' else -betrag
@@ -111,18 +112,18 @@ def uebersicht_anzeigen():
             print(f'\nLohn: \t\t\t\t{bilanz_lohn:.2f} CHF')
             print(f'\nTransport: \t\t\t{bilanz_transport:.2f} CHF')
             print(f'\nEinkäufe: \t\t\t{bilanz_einkaeufe:.2f} CHF')
-            print(f'\nVersicherungen: \t{bilanz_versicherungen:.2f} CHF')
+            print(f'\nVersicherungen: \t\t{bilanz_versicherungen:.2f} CHF')
             print(f'\nMiete: \t\t\t\t{bilanz_miete:.2f} CHF')
             print(f'\nSteuern: \t\t\t{bilanz_steuern:.2f} CHF')
             print(f'\nFreizeiz: \t\t\t{bilanz_freizeit:.2f} CHF')
             print(f'\nSparen: \t\t\t{bilanz_sparen:.2f} CHF')
-            print(f'\nWell being: \t\t{bilanz_wellbeing:.2f} CHF')
+            print(f'\nWell being: \t\t\t{bilanz_wellbeing:.2f} CHF')
             print(f'\nSonstiges: \t\t\t{bilanz_sonstiges:.2f} CHF')
 
             print(f'\nEinnahmen: \t\t\t{gesamt_einnahmen:.2f} CHF')
             print(f'Ausgaben: \t\t\t{gesamt_ausgaben:.2f} CHF')
 
-            print(f'\nGesamtbilanz: \t\t{gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
+            print(f'\nGesamtbilanz: \t\t\t{gesamt_einnahmen - gesamt_ausgaben:.2f} CHF')
             break
         elif optionauswahl == 'x':
             return

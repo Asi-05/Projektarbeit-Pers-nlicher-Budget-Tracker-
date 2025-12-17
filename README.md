@@ -1,8 +1,9 @@
-# 💰 Personal Budget Planer
+# 💰 Personeller Budgetplaner
 
-Dieses Projekt hat folgende Ziele:
-Einen personellen Budgetplaner programmieren
--
+## 🎯 Projektziel
+
+Ziel dieses Projektes ist die Entwicklung eines personellen Budgetplaners, mit dem Benutzer ihre Einnahmen und Ausgaben effizient verwalten können. Die Anwendung ermöglicht eine strukturierte Erfassung, Kategorisierung sowie die Auswertung finanzieller Daten über definierte Zeiträume.
+
 
 ## 📝 Analyse
 
@@ -59,54 +60,59 @@ Die Anwendung validiert alle Benutzereingaben um Datenintegrität und reibungslo
 	print("=== Willkommen zu deinem Budgetplaner ===")
 
 	def main():
-    
+    """Hauptmenü"""
 
 	#Funktion für Menü
-    	def start_menu(): #definiert die Funktoin Start mit Namen start_menu
-        	print("\nWas willst du heute machen?")
-        	print("1) Einnahmen hinzufügen")
-        	print("2) Ausgaben hinzufügen")
-        	print("3) Übersicht anzeigen")
-        	print("4) Edit")
-        	print("5) Programm beenden")
+    def start_menu():                                               #definiert die Funktoin Start mit Namen start_menu
+        print("\nWas willst du heute machen?")
+        print("1) Einnahmen hinzufügen")
+        print("2) Ausgaben hinzufügen")
+        print("3) Übersicht anzeigen")
+        print("4) Editieren")
+        print("5) Programm beenden")
     
-        	choice = input("Bitte wähle eine Option (1-5): ")
-        	return choice #choice wird gemäss eingabe vom User wiedergegeben
+        choice = input("Bitte wähle eine Option (1-5): ")
+        #choice wird ans start_menu() zurückgegeben
+        return choice                                               #choice wird gemäss eingabe vom User wiedergegeben
 
 
 
-	#Hauptprogramm mit Schleife
-    	while True: 
-        	auswahl = start_menu() #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
+    # Hauptprogramm mit Schleife
+    while True: 
+        auswahl = start_menu()                                      #funktion (start_menu) wird abgerufen, return choice gibt wert an bspw: 3
 
-        	if auswahl == "1":
+        if auswahl == "1":
             einnahmen_hinzufuegen()
-        	elif auswahl == "2":
+        elif auswahl == "2":
             ausgaben_hinzufuegen()
-        	elif auswahl == "3":
+        elif auswahl == "3":
             uebersicht_anzeigen()
-       	 	elif auswahl == "4":
+        elif auswahl == "4":
             editieren()
- 			elif auswahl == "5":
+        elif auswahl == "5":
             print("Vielen Dank, dass du den Budgetplaner verwendet hast. Auf Wiedersehen!")
             break
 
         else:
             print(" X Ungültige Eingabe, bitte nochmals versuchen.")
+
 	```
-	Dies lässt nur gültige Zahlen durch, um die gewünschte Funktion auszulösen.
+Dies lässt nur gültige Zahlen durch, um die gewünschte Funktion auszulösen.
 
 - **CSV Datei validieren:** Beim ausführen jeder Funktion wird geprüft, ob schon eine CSV Datei existiert. Falls Ja wird die Fehlermeldung: FileExistsError übersprungen. Falls keine CSV Datei existiert wird eine neue erstellt mit dem Namen: 'budged.csv'
 ```python
- DATEI = 'budget.csv' 
+#Legt den Dateinamen als Konstante fest (Vorteil-> kann einfacher geändert werden)
+DATEI = 'budget.csv'
 
-def datei_pruefen():    												#prüfen, ob die CSV Datei exestiert, ansonsten wird diese erstellt
+#prüfen, ob die CSV Datei existiert, ansonsten wird diese erstellt
+def datei_pruefen():
+    '''Funktion um CSV Datei zu prüfen'''
     try:
-        with open (DATEI, 'x', newline = '') as file:       			#öffnet die Datei im x Modus (erstellt neue Datei, wenn sie nicht existiert)
-            writer = csv.writer(file)                      		 		#erstellt ein CSV Schreibobjekt
-            writer.writerow(['datum', 'betrag', 'typ', 'kategorie'])    #schreibt die spalten überschriften
-    except FileExistsError:            									#falls die Datei schon existiert, tritt dieser Fehler auf
-        pass                                							#Dann wird einfach nichts gemacht (Datei bleibt bestehen)
+        with open (DATEI, 'x', newline = '') as file:                   #öffnet die Datei im x Modus (erstellt NUR neue Datei, wenn sie nicht bereits existiert), newline = '' verhindert, dass leere Zeilen in der CSV datei
+            writer = csv.writer(file)                                   #erstellt ein CSV Schreibobjekt, Daten können so Kommagetrennt geschrieben werden --> (passiert automatisch)
+            writer.writerow(['datum', 'betrag', 'typ', 'kategorie'])    #schreibt die spalten überschriften in der CSV Datei
+    except FileExistsError:                                             #falls die Datei schon existiert, tritt dieser Fehler auf (Wird aufgefangen und PASS)
+        pass                                                            #Dann wird einfach nichts gemacht (Datei bleibt bestehen)
 	
 ```
 
@@ -141,7 +147,7 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 		2          01.05.2025   3000.0       Einnahme
   		3          01.06.2025   3000.0       Einnahme     
 		```
-		- Diese Anzeige dient als Übersicht für den User, um seine Eingaben in einer Übersicht zu sehen. So kann der User gezielt Daten aussuchen und bearbeiten oder löschen mit der XXX Funktion.
+		- Diese Anzeige dient als Übersicht für den User, um seine Eingaben in einer Übersicht zu sehen. So kann der User gezielt Daten aussuchen und bearbeiten oder löschen mit der `editieren.py` Funktion.
 ## ⚙️ Implementation
 
 ### Technology
@@ -180,8 +186,10 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 2. **Terminal** öffnen
 3. Eingeben:
 	```bash
+ 	cd main
 	python3 main.py
-	```
+ 	```
+	
 
 ### Libraries Used
 
@@ -191,11 +199,11 @@ Die Applikation liest aus einer CSV Datei und schreibt Daten in eine CSV datei.
 
 ## 👥 Team & Beiträge
 
-| Name       			| Beitrag									   																	   |
-|-----------------------|------------------------------------------------------------------------------------------------------------------|
-|Asithan Supendran  	|Hauptmenüfunktion, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces |
-|Filmon Samy			|Editierfunktion, Ausgabenfunktion, Löschen Funktion 															   |              
-|Janath Balasubramaniam |Kategorie Auswahl Funktion, Übersichtsfunktion, Datumeingabe Funktion 											   |  
+| Name       			| Beitrag									   																						|
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+|Asithan Supendran  	|Hauptmenüfunktion, Einnahmefunktion, Aufteilung der funktionen, Erstellung der branches und Aufbau des Codespaces, Readme Datei 	|	
+|Filmon Samy			|Editierfunktion, Ausgabenfunktion, Löschen Funktion 															   					|              
+|Janath Balasubramaniam |Kategorie Auswahl Funktion, Übersichtsfunktion, Datumeingabe Funktion 											   					|  
 
 
 
